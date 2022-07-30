@@ -1,0 +1,37 @@
+_GLOBAL_:
+    * CHANGER DATE FORMAT -> AAAA/MM/DD
+    * CHANGER LA LANGUE DU DATEPICKER EN ARABE
+    * REGLAGE AFFICHAGE MOBILE (responsive)
+    * transformer fieldset -> tabs
+    * ajout de import/export pour tous les models
+    * ajout du module Statistiques
+    * ajout du module Dashboard
+    * ajout du module STOCK
+    * ajout du module INVENTAIRE MATERIEL
+    * AJOUT MODULE MESSAGERIE
+    * AJOUT MODULE TAMADROS
+
+
+_APP BENEFICIAIRE_ :
+    * URGENT: REGLER PROBLEME ENREGISTREMENT DUPLIQUE (BENEFICIAIRE) , UNIQUE_TOGETHER NE MARCHE PAS CAR CIN ET ACTE NAISSANCE ACCEPTENT NULL!
+    * DESACTIVATION DU CHAMP "CENTRE" LORS DE LA SAISIE DE LA DEMANDE D ATTESTATION (INLINE)
+
+_APP ATTESTATION_ :
+    * AJOUT DU TDB STATS AU MODULE "ATTESTATIONS"
+    * EXPORT DES AUTRES CHAMPS DE LA DEMANDE D'ATTESTATION
+    * AJOUT TYPE HANDICAP AUX TABLEAU DES ATTESTATION (XLS)
+    * AFFICHAGE MENU FILTRES QUI DISPARAIT AU SURVOL DU TYPE DU HANDICAP
+
+_GLOBAL_ :
+
+
+
+***deux scénarios sont possibles:
+- respect des normes des BD :
+   -> app bénéficiaires
+   -> app prothèse
+   -> app auditif / aides techniques ...
+   DEFAUTS : gestion du changement des adresses des bénéficiaires
+- non respect des normes des BD :
+   -> sans app bénéficiaires
+   DEFAUTS : duplication des bénéficiaires ,

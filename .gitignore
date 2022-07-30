@@ -1,0 +1,7 @@
+*.pyc
+__pycache__
+__pycache__/
+env
+db-prod-14-06-2021.sqlite3
+db-prod.sqlite3
+db.sqlite3

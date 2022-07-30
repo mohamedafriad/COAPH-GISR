@@ -1,0 +1,116 @@
+{% load static %}{% load i18n %}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE|default:"fr" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{% block title %}خدماتي - COAPH{% endblock %}</title>
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="{% static 'frontend/img/favicon.png'%}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'frontend/css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'frontend/css/fontawesome.min.css' %}" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+        <style>
+        @font-face {
+            font-family: "Ishraq";
+            src: url("{% static 'frontend/fonts/Ishraq.otf' %}");
+        }
+        @font-face {
+            font-family: "IshraqL";
+            src: url("{% static 'frontend/fonts/IshraqL.otf' %}");
+        }
+        * {
+            font-family: "cairo";
+        }
+        nav a {
+            font-family: "cairo";
+            font-size: 1.3rem;
+        }
+        nav a.navbar-brand {
+            font-family: "cairo";
+            font-size: 1.3rem;
+        }
+        #note {
+            display:none;
+        }
+        .navbar a, button.navbar-toggler {
+            color : white;
+        }
+        p.alert-danger {
+            background-color : #dc3545;
+            color: white;
+        }
+        nav a.dropdown-item {
+            color: black;
+        }
+        </style>
+        {% block extrahead %}{% endblock %}
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-success bg-success align-items-center">
+            <div class="container px-5">
+                <a class="navbar-brand" href="{% url 'front' %}">COAPH-GISR</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <!--<span class="navbar-toggler-icon">القائمة </span>-->
+                    <i class="fa-solid fa-list navbar-toggler-icon"></i> القائمة
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'front' %}">الرئيسية <i class="fa-solid fa-home"></i></a></li>
+                        <li class="nav-item">
+                            <div class="btn-group" role="group">
+                                <a class="nav-link active" id="btnGroupDrop1" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  الخدمات
+                                  <i class="fa-solid fa-server"></i>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                  <li><a class="dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSf5CU_h7l45s5RS-Hq4EtQ_OWstY6SKCd0g8t0VUsjJ7Sck9g/viewform" target="_blank">إيداع الطلب</a></li>
+                                  <li><a class="dropdown-item" href="{% url 'f-suivi-agr' %}">تتبع الطلب</a><li>
+                                  <li><a class="dropdown-item" href="{% url 'f-agr' %}">معلومات حول البرنامج</a><li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!--<li class="nav-item"><a class="nav-link" href="#!">للتواصل <i class="fa-solid fa-phone"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">اطرح سؤالا <i class="fa-solid fa-question"></i></a></li>-->
+                        <li class="nav-item"><a class="nav-link" href="{% url 'f-centres-tout' %}">المراكز <i class="fa-solid fa-map-location"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}" target="_blank">البوابة الإدارية <i class="fa-solid fa-cog"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-4 px-lg-5">
+        {% block content %}
+            <!-- Heading Row-->
+
+            <!-- Call to Action-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-2">
+                <div class="col-12 d-flex justify-content-between">
+                    <div><a class="btn btn-outline-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSf5CU_h7l45s5RS-Hq4EtQ_OWstY6SKCd0g8t0VUsjJ7Sck9g/viewform" target="_blank"><i class="fa-solid fa-upload"></i> إيداع الطلب</a></div>
+                    <div><a class="btn btn-outline-success" href="{% url 'f-suivi-agr' %}"><i class="fas fa-search"></i> تتبع الطلب</a></div>
+                    <div><a class="btn btn-outline-info" href="{% url 'f-agr' %}"><i class="fa-solid fa-info-circle"></i> المزيد من المعلومات</a></div>
+                </div>
+            </div>
+            <div class="row gx-4 gx-lg-5 align-items-center mb-1 animate__animated animate__zoomInLeft animate__slow">
+                <img src="https://social.gov.ma/wp-content/uploads/2022/07/BANNER-GISR_banner-mobil.jpg" />
+            </div>
+            <!-- Content Row-->
+            {% endblock %}
+        </div>
+        <!-- Footer-->
+        <footer class="py-2 bg-success fixed-bottom">
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright 2022 &copy; </p></div>
+        </footer>
+        <!-- Bootstrap core JS -->
+        <script src="{%static 'frontend/js/bootstrap.min.js'%}"></script>
+        <!-- Core theme JS -->
+        <script src="{%static 'frontend/js/scripts.js'%}"></script>
+        <script src="{%static 'frontend/js/fontawesome.min.js'%}"></script>
+        {% block extrascripts %}{% endblock %}
+    </body>
+</html>

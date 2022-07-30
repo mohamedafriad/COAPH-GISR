@@ -1,0 +1,156 @@
+{% extends "frontend/index.html" %}
+{% load static %}{% load i18n grp_tags %}
+{% block title %}خدماتي - COAPH - المشاريع المدرة للدخل{% endblock %}
+{% block extrahead %}
+{% endblock %}
+{% block content %}
+<!-- Heading Row-->
+<div class="row gx-4 gx-lg-5 align-items-center my-5">
+  <div class="col-sm-12">
+    <div class="card h-100 col-sm-12">
+      <div class="card-header text-center">
+        <h1 class="font-weight-light">خدمة المشاريع المدرة للدخل</h1>
+      </div>
+      <div class="card-body">
+        <p> في إطار تبسيط المساطر وتقريب الخدمات الإدارية من الأشخاص في وضعية إعاقة، تم إعداد فضاء خاص يمكن من الإطلاع على وضعية الملفات والطلبات المقدمة من طرف هذه الفئة دون الحاجة إلى التنقل إلى المرافق الإدارية</p>
+      </div>
+      <div class="card-footer col-sm-12 text-center">
+        <a class="btn btn-danger" href="{% url 'f-suivi-agr' %}">تتبع طلب الدعم الخاص بي</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card h-100">
+      <div class="card-header  text-center">
+        <h3><i class="fa-solid fa-users"></i> الفئات المستهدفة</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          <ul>
+            <li>الأشخاص في وضعية إعاقة</li>
+            <li>الحاملين للجنسية المغربية</li>
+            <li>البالغين من العمر 18 سنة فما فوق</li>
+            <li>الذين لا يتوفرون على دخل قار</li>
+            <li>الذين لم يستفيدوا من أي دعم حكومي في مجال التشغيل</li>
+          </ul>
+          <p></p>
+          <p></p>
+        </div>
+      </div>
+      <div class="card-footer col-md-12">
+        <h7>بالنسبة للأشخاص في وضعية إعاقة، فإن الطلب يقدم في اسم الأب أو الأم أو ولي الأمر</h7>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card  h-100">
+      <div class="card-header  text-center">
+        <h3><i class="fa-solid fa-money-check"></i> مبلغ الدعم</h3>
+      </div>
+      <div class="card-body">  
+        <div class="card-text">
+          <ul>
+            <li>مشروع فردي (شخص واحد): في حدود 60.000 درهم</li>
+            <li>مشروع ثنائي (شخصين) : في حدود 120.000 درهم</li>
+            <li>مشروع جماعي : في حدود 200.000 درهم</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer col-md-12">
+        <h7>
+          يمكن إحداث مقاولة ذاتية أو شركة أو تعاونية
+        </h7>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card h-100">
+      <div class="card-header text-center">
+        <h3><i class="fa-solid fa-upload"></i> إيداع الملف</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+           يتم إيداع ملف طلب الدعم لدى أحد مراكز توجيه ومساعدة الأشخاص في وضعية إعاقة أو لدى منسقيات ومندوبيات 
+           التعاون الوطني التابعة للمجال الترابي لحامل المشروع 
+        </div>
+      </div>
+      <div class="card-footer col-md-12">
+        <h7>ويمكن سحب النماذج من أقرب مركز توجيه ومساعدة الأشخاص في وضعية إعاقة أو منسقية جهوية أو 
+          مندوبية إقليمية للتعاون الوطني أو تحميلها من <a href="#downCard">هنا</a>
+        </h7>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row my-5">
+  <div class="col-sm-6">
+    <div class="card h-100">
+      <div class="card-header text-center">
+        <h3><i class="fa-solid fa-file"></i> الوثائق المطلوبة</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          <ul>
+            <li>طلب إلى السيد مدير التعاون الوطني</li>
+            <li>نسخة من بطاقة التعريف الوطنية</li>
+            <li>نسخة من بطاقة التعريف الوطنية لولي الأمر (في حالة الإعاقة الذهنية)</li>
+            <li>شهادة الإعاقة أو وثيقة طبية تثبت نوع الإعاقة</li>
+            <li>نسخة من بطاقة راميد للمستفيدين من نظام المساعدة الطبية</li>
+            <li>بطاقة المشروع وفق النموذج 2</li>
+            <li>تصريح بالشرف والتزام وفق النموذج 3</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer col-md-12">
+        <h7>يمكن لصاحب الطلب تعزيز ملفه بوثائق أخرى كشواهد التكوين والخبرة 
+          و ما يثبت التوفر على مقر لاحتصان المشروع</h7>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card h-100" id="#downCard">
+      <div class="card-header text-center">
+        <h3><i class="fa-solid fa-download"></i> تحميل النماذج</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          <table class="table table-hover col-sm-12">
+            <tr>
+              <td>نموذج الطلب</td>
+              <td>
+                <a href="#" target="_blank" class="btn btn-danger"><i class="fa-solid fa-download"></i> تحميل</a>
+              </td>
+            </tr>
+            <tr>
+              <td>بطاقة المشروع</td>
+              <td>
+                <a href="#" target="_blank" class="btn btn-danger"><i class="fa-solid fa-download"></i> تحميل</a>
+              </td>
+            </tr>
+            <tr>
+              <td>تصريح بالشرف والتزام</td>
+              <td>
+                <a href="#" target="_blank"  class="btn btn-danger"><i class="fa-solid fa-download"></i> تحميل</a>
+              </td>
+            </tr>
+            <tr>
+              <td>تصريح بالشرف والتزام (الإعاقة الذهنية)</td>
+              <td>
+                <a href="#" target="_blank"  class="btn btn-danger"><i class="fa-solid fa-download"></i> تحميل</a>
+              </td>
+            </tr>
+            <tr>
+              <td>نموذج تصريح بالتوفر على محل</td>
+              <td>
+                <a href="#" target="_blank"  class="btn btn-danger"><i class="fa-solid fa-download"></i> تحميل</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

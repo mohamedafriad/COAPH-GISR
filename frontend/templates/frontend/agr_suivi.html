@@ -1,0 +1,129 @@
+{% extends "frontend/index.html" %}
+{% load static %}{% load i18n grp_tags %}{% load qr_code %}
+{% block title %}خدماتي - COAPH - المشاريع المدرة للدخل{% endblock %}
+{% block extrahead %}
+<script type="text/javascript">
+</script>
+{% endblock %}
+{% block content %}
+<div class="row gx-4 gx-lg-6 align-items-center my-5 justify-content-center">
+  <div class="col-6  align-items-center">
+    <div class="card col-md-12 h-100 align-items-center">
+      <h3 class="card-header col-md-12 text-center">تتبع المشاريع المدرة للدخل</h3>
+      <div class="card-body">
+        <div class="card-text">
+            <form class="form">
+                <div class="text-center">
+                <input class="form-control" type="text" required name="num_demande" placeholder="قم بإدخال رقم الطلب هنا" id="numeroD"/>
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="card-footer col-md-12 text-center">
+        <button class="btn btn-danger" id="get_dem" onclick="btnClicked()">البحث</button>
+        <a id="num_dem" href="{% url 'f-suivi-agr' %}" class="btn-info" hidden>البحث</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% if error %}
+  <p class="alert alert-danger">لا يوجد أي طلب بهذا الرقم. المرجو تصحيح رقم الطلب</p>
+{% else %}
+{% if projet.pk %}
+<div class="row gx-4 gx-lg-5 align-items-center my-5">
+  <div class="col-md-12 align-items-center">
+    <div class="card col-md-12 h-100 align-items-center">
+      <h3 class="card-header col-md-12 text-center"><center>معلومات حول الطلب</center></h3>
+      <div class="card-body">
+        <div class="card-text">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="projet_pk" class="form-label">رقم الطلب</label>
+              <input type="text" name="projet_pk" class="input" disabled value="{{ projet.pk}}" />
+            </div>
+            <div class="col-md-6">
+              <label for="projet_dated" class="form-label">تاريخ الطلب</label>
+              <input type="text" name="projet_dated" class="input" disabled value="{{ projet.date_demande}}" />
+            </div>
+            {% for ben in projet.porteur.all %}
+            <div class="col-md-6">
+              <label class="form-label" for="projet_ben">حامل المشروع</label>
+              <input type="text" name="projet_ben" class="input" disabled value="{{ ben.beneficiaire.nom_ar}} {{ ben.beneficiaire.prenom_ar}}" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="projet_cin">رقم البطاقة الوطنية</label>
+              <input type="text" name="projet_cin" class="input" disabled value="{{ ben.beneficiaire.cin}}" />
+            </div>
+            {% endfor %}
+            <div class="col-md-6">
+              <label class="form-label" for="projet_etap">مرحلة الطلب</label>
+              <input type="text" class="input" disabled name="projet_etap" value="{{ projet.get_etape }}" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="projet_etapd">تاريخ المرحلة</label>
+              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.get_etape_date }}" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="projet_etapd">اسم المشروع</label>
+              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.intitule }}" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="projet_etapd">المبلغ المطلوب</label>
+              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.montant_demande }}" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="qrcode align-items-center">
+          {% qr_from_text "{{ projet.pk }}" size="t" image_format="svg" error_correction="L" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row gx-4 gx-lg-5 align-items-center my-5">
+  <div class="col-md-12 align-items-center">
+    <div class="card col-md-12 h-100 align-items-center">
+      <h3 class="card-header col-md-12 text-center"><center>مراحل معالجة الطلب</center></h3>
+      <div class="card-body col-md-12">
+        <table class="table table-hover col-md-12">
+          <thead>
+            <tr>
+              <th>المرحلة</th>
+              <th>تاريخها</th>
+              <th>القرار</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for etape in projet.suivi.all %}
+            <tr>
+              <td>{{ etape.etape }}</td>
+              <td>{{ etape.date_etap }}</td>
+              <td>{{ etape.commentaire }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+  <p class="alert alert-info">المرجو إدخال رقم الطلب في الخانة المخصصة لذلك قبل الضغط على زر البحث. وشكرا</p>
+{% endif %}
+{% endif %}
+{% endblock %}
+{% block extrascripts %}
+<script type="text/javascript">
+var btn=document.getElementById("get_dem");
+function btnClicked(e){
+  let link=document.getElementById("num_dem");
+  let numero=document.getElementById("numeroD");
+  if (numero.value != "" ){
+    link.href = '{% url "f-suivi-agr" %}' + numero.value + '/';
+    link.click();
+  }
+};
+</script>
+{% endblock %}

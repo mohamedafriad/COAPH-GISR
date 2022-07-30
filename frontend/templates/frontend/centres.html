@@ -1,0 +1,67 @@
+{% extends "frontend/index.html" %}
+{% load static %}{% load l10n %}
+{% block extrahead %}
+<style>
+</style>
+{% endblock %}
+{% block content %}
+<div class="row gx-4 gx-lg-5 align-items-center my-5 justify-content-center">
+    <div class="col-12 d-flex justify-content-center">
+        <div class="card h-100 col-sm-12">
+            <div class="card-header text-center">
+                <h4 class="font-weight-light"> البحث عن مركز توجيه ومساعدة الأشخاص في وضعية إعاقة</h4>
+            </div>
+            <div class="card-body">
+                <form class="form row">
+                    <div class="col-6">
+                        <select class="form-select text-center" name="region" id="region" placeholder="الجهة">
+                            <option value="null">يرجى اختيار الجهة</option>
+                            {% for region in regions %}
+                                <option value="{{ region.pk }}">{{ region.nom}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <select class="form-select text-center" name="province" id="province" placeholder="الإقليم">
+                            <option value="null">يرجى اختيار الإقليم</option>
+                            {% for province in provinces %}
+                                <option value="{{ province.pk }}">{{ province.nom}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer col-sm-12 text-center">
+                <button class="btn btn-primary"><i class="fa-solid fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row gx-4 gx-lg-5 align-items-center my-5">
+    <div class="col-sm-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>اسم المركز</th>
+                    <th>رقم الهاتف</th>
+                    <th>العنوان</th>
+                    <th>الموقع الجغرافي</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for centre in centres %}
+                <tr>
+                    <td>{{ centre.nom }}</td>
+                    <td>{{ centre.telephone }}</td>
+                    <td>{{ centre.adresse }}</td>
+                    <td><a href="{% url 'f-centre-sanspr' pk=centre.pk %}">الموقع الجغرافي</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}
+{% block extrascripts %}
+
+{% endblock %}

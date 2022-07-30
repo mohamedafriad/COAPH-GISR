@@ -1,0 +1,15 @@
+{% extends "frontend/index.html" %}
+{% load static %}{% load i18n grp_tags %}
+{% block title %}خدماتي - COAPH - شهادة الاعاقة{% endblock %}
+{% block extrahead %}
+{% endblock %}
+{% block content %}
+<!-- Heading Row-->
+  <div class="row gx-4 gx-lg-5 align-items-center my-5">
+    <div class="col-lg-5">
+      <h1 class="font-weight-light">خدمة شهادة الإعاقة</h1>
+      <p> في إطار تبسيط المساطر وتقريب الخدمات الإدارية من الأشخاص في وضعية إعاقة، تم إعداد فضاء خاص يمكن من الإطلاع على وضعية الملفات والطلبات المقدمة من طرف هذه الفئة دون الحاجة إلى التنقل إلى المرافق الإدارية</p>
+      <a class="btn btn-danger" href="{% url 'f-suivi-attestation' %}">الولوج إلى الفضاء الخاص</a>
+    </div>
+  </div>
+{% endblock %}

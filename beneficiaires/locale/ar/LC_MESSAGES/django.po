@@ -1,0 +1,617 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-29 23:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: beneficiaires/admin.py:7
+msgid "Tableau de bord"
+msgstr "لوحة القيادة"
+
+#: beneficiaires/admin.py:8
+msgid "Administration AGR"
+msgstr "جسر من الإعاقة إلى التمكين"
+
+#: beneficiaires/admin.py:9
+msgid "Gestion AGR"
+msgstr "جسر من الإعاقة إلى التمكين"
+
+#: beneficiaires/admin.py:57
+msgid "Etat Civile"
+msgstr "المعلومات الشخصية"
+
+#: beneficiaires/admin.py:61
+msgid "Infos de Contact"
+msgstr "معلومات التواصل"
+
+#: beneficiaires/admin.py:65
+msgid "Situation Sociale"
+msgstr "الحالة الاجتماعية"
+
+#: beneficiaires/apps.py:7
+msgid "beneficiaires"
+msgstr "[ المستفيدون ]"
+
+#: beneficiaires/models.py:8 beneficiaires/models.py:26
+#: beneficiaires/models.py:42
+msgid "NON DETERMINE"
+msgstr "غير محددة"
+
+#: beneficiaires/models.py:9 beneficiaires/models.py:27
+msgid "SANS"
+msgstr "بدون"
+
+#: beneficiaires/models.py:10
+msgid "PRIMAIRE"
+msgstr "ابتدائي"
+
+#: beneficiaires/models.py:11
+msgid "COLLEGIAL"
+msgstr "اعدادي"
+
+#: beneficiaires/models.py:12
+msgid "SECONDAIRE"
+msgstr "ثانوي"
+
+#: beneficiaires/models.py:13
+msgid "BACCALUAREAT"
+msgstr "بكالوريا"
+
+#: beneficiaires/models.py:14
+msgid "TECHNCIEN/DUT"
+msgstr "تقني"
+
+#: beneficiaires/models.py:15
+msgid "UNIVERSITAIRE"
+msgstr "جامعي"
+
+#: beneficiaires/models.py:19
+msgid "RECHERCHE UN EMPLOI"
+msgstr "باحث عن عمل"
+
+#: beneficiaires/models.py:20
+msgid "EN ACTIVITE"
+msgstr "مزاول لنشاط إقتصادي"
+
+#: beneficiaires/models.py:21
+msgid "EN FORMATION"
+msgstr "فترة تكوين"
+
+#: beneficiaires/models.py:22
+msgid "AUTRE"
+msgstr "آخر"
+
+#: beneficiaires/models.py:28
+msgid "RAMED"
+msgstr "راميد"
+
+#: beneficiaires/models.py:29
+msgid "CNSS"
+msgstr "الصندوق الوطني للضمان الاجتماعي"
+
+#: beneficiaires/models.py:30
+msgid "CNOPS"
+msgstr "الصندوق الوطني لمنظمات الاحتياط الاجتماعي"
+
+#: beneficiaires/models.py:31
+msgid "CMR"
+msgstr "الصندوق المغربي للتقاعد"
+
+#: beneficiaires/models.py:32
+msgid "CIMR"
+msgstr "الصندوق المهني المغربي للتقاعد"
+
+#: beneficiaires/models.py:33
+msgid "ASSURANCE"
+msgstr "التأمين"
+
+#: beneficiaires/models.py:37
+msgid "Masculin"
+msgstr "ذكر"
+
+#: beneficiaires/models.py:38
+msgid "Féminin"
+msgstr "أنثى"
+
+#: beneficiaires/models.py:43
+msgid "ENFANT"
+msgstr "طفل(ة)"
+
+#: beneficiaires/models.py:44
+msgid "CELIBATAIRE"
+msgstr "عزب(ة)"
+
+#: beneficiaires/models.py:45
+msgid "MARIE(E)"
+msgstr "متزوج(ة)"
+
+#: beneficiaires/models.py:46
+msgid "DIVORCE(E)"
+msgstr "مطلق(ة)"
+
+#: beneficiaires/models.py:47
+msgid "VEUF(VE)"
+msgstr "أرمل(ة)"
+
+#: beneficiaires/models.py:51
+msgid "Janvier"
+msgstr "يناير"
+
+#: beneficiaires/models.py:52
+msgid "Février"
+msgstr "فبراير"
+
+#: beneficiaires/models.py:53
+msgid "Mars"
+msgstr "مارس"
+
+#: beneficiaires/models.py:54
+msgid "Avril"
+msgstr "أبريل"
+
+#: beneficiaires/models.py:55
+msgid "Mai"
+msgstr "ماي"
+
+#: beneficiaires/models.py:56
+msgid "Juin"
+msgstr "يونيو"
+
+#: beneficiaires/models.py:57
+msgid "Juillet"
+msgstr "يوليوز"
+
+#: beneficiaires/models.py:58
+msgid "Aout"
+msgstr "غشت"
+
+#: beneficiaires/models.py:59
+msgid "Septembre"
+msgstr "شتنبر"
+
+#: beneficiaires/models.py:60
+msgid "Octobre"
+msgstr "أكتوبر"
+
+#: beneficiaires/models.py:61
+msgid "Novembre"
+msgstr "نونبر"
+
+#: beneficiaires/models.py:62
+msgid "Décembre"
+msgstr "دجنبر"
+
+#: beneficiaires/models.py:89
+msgid "Centre"
+msgstr "المركز"
+
+#: beneficiaires/models.py:94
+msgid "CIN"
+msgstr "رقم البطاقة الوطنية"
+
+#: beneficiaires/models.py:95
+msgid "N° Acte de Naissance"
+msgstr "رقم عقد الازدياد"
+
+#: beneficiaires/models.py:96
+msgid "Mois Exp CIN"
+msgstr "شهر انتهاء صلاحية البطاقة"
+
+#: beneficiaires/models.py:97
+msgid "Année Exp CIN"
+msgstr "سنة انتهاء صلاحية البطاقة"
+
+#: beneficiaires/models.py:98
+msgid "Nom Arabe"
+msgstr "النسب بالعربية"
+
+#: beneficiaires/models.py:99
+msgid "Prénom Arabe"
+msgstr "الاسم بالعربية"
+
+#: beneficiaires/models.py:100
+msgid "Nom (fr)"
+msgstr "النسب بالفرنسية"
+
+#: beneficiaires/models.py:101
+msgid "Prénom (fr)"
+msgstr "الاسم بالفرنسية"
+
+#: beneficiaires/models.py:102
+msgid "Sexe"
+msgstr "النوع"
+
+#: beneficiaires/models.py:103
+msgid "Date naissance"
+msgstr "تاريخ الازدياد"
+
+#: beneficiaires/models.py:104
+msgid "Age"
+msgstr "السن"
+
+#: beneficiaires/models.py:105
+msgid "Lieu naissance"
+msgstr "مكان الازدياد"
+
+#: beneficiaires/models.py:106
+msgid "Nom Tuteur"
+msgstr "اسم ولي الأمر"
+
+#: beneficiaires/models.py:107
+msgid "CIN Tuteur"
+msgstr "رقم بطاقة ولي الأمر"
+
+#: beneficiaires/models.py:108
+msgid "Nom Mère"
+msgstr "اسم الأم"
+
+#: beneficiaires/models.py:109
+msgid "CIN Mère"
+msgstr "رقم بطاقة الأم"
+
+#: beneficiaires/models.py:112
+msgid "Région"
+msgstr "الجهة"
+
+#: beneficiaires/models.py:121
+msgid "Province"
+msgstr "العمالة أو الإقليم"
+
+#: beneficiaires/models.py:128
+msgid "Commune"
+msgstr "الجماعة"
+
+#: beneficiaires/models.py:131
+msgid "Adresse"
+msgstr "العنوان"
+
+#: beneficiaires/models.py:132
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#: beneficiaires/models.py:133
+msgid "Téléphone"
+msgstr "الهاتف"
+
+#: beneficiaires/models.py:134
+msgid "Situation familliale"
+msgstr "الحالة العائلية"
+
+#: beneficiaires/models.py:135
+msgid "Couverture Sociale"
+msgstr "التغطية الاجتماعية"
+
+#: beneficiaires/models.py:136
+msgid "N° RAMED"
+msgstr "رقم الراميد"
+
+#: beneficiaires/models.py:137
+msgid "Mois Exp RAMED"
+msgstr "شهر انتهاء صلاحية الراميد"
+
+#: beneficiaires/models.py:138
+msgid "Année Exp RAMED"
+msgstr "سنة انتهاء صلاحية الراميد"
+
+#: beneficiaires/models.py:139
+msgid "Profession"
+msgstr "المهنة"
+
+#: beneficiaires/models.py:140
+msgid "Niveau Scolaire"
+msgstr "المستوى الدراسي"
+
+#: beneficiaires/models.py:141
+msgid "Situation Socio Professionnelle"
+msgstr "الوضعية المهنية"
+
+#: beneficiaires/models.py:142
+msgid "Code Vérification Attestation"
+msgstr "رمز التحقق من شهادة الإعاقة"
+
+#: beneficiaires/models.py:158
+msgid ""
+"Veuillez renseigner la Cin (cas adulte) ou l'acte de naissance (cas enfant)"
+msgstr "المرجو تحديد رقم البطاقة الوطنية أو رقم عقد الازدياد (للأطفال)"
+
+#: beneficiaires/models.py:160
+#, python-format
+msgid "Le bénéficiaire avec la cin=%s est déjà enregistré"
+msgstr "المستفيد الذي يحمل رقم البطاقة %s تم تسجيله مسبقا"
+
+#: beneficiaires/models.py:162
+#, python-format
+msgid "Le bénéficiaire avec l'acte numéro=%s est déjà enregistré"
+msgstr "المستفيد الذي يحمل رقم عقد الازدياد %s تم تسجيله مسبقا"
+
+#: beneficiaires/models.py:191
+msgid "Validité CIN"
+msgstr "صلاحية البطاقة الوطنية"
+
+#: beneficiaires/models.py:208
+msgid "Validité RAMED"
+msgstr "صلاحية بطاقة راميد"
+
+#: beneficiaires/models.py:221 beneficiaires/models.py:281
+msgid "Handicaps"
+msgstr "الإعاقات"
+
+#: beneficiaires/models.py:228 beneficiaires/models.py:263
+msgid "Bénéficiaire"
+msgstr "المستفيد"
+
+#: beneficiaires/models.py:229
+msgid "Bénéficiaires"
+msgstr "المستفيدون"
+
+#: beneficiaires/models.py:233
+msgid "MOTEUR"
+msgstr "حركية"
+
+#: beneficiaires/models.py:234
+msgid "MENTAL"
+msgstr "ذهنية"
+
+#: beneficiaires/models.py:235
+msgid "VISUEL"
+msgstr "بصرية"
+
+#: beneficiaires/models.py:236
+msgid "AUDITIF"
+msgstr "سمعية"
+
+#: beneficiaires/models.py:237
+msgid "VOCAL"
+msgstr "صوتية"
+
+#: beneficiaires/models.py:241 beneficiaires/models.py:248
+msgid "NON DEFINI"
+msgstr "غير محددة"
+
+#: beneficiaires/models.py:242
+msgid "LEGER"
+msgstr "خفيفة"
+
+#: beneficiaires/models.py:243
+msgid "MOYEN"
+msgstr "متوسطة"
+
+#: beneficiaires/models.py:244
+msgid "PROFOND"
+msgstr "عميقة"
+
+#: beneficiaires/models.py:249
+msgid "DEFINITIVE"
+msgstr "دائمة"
+
+#: beneficiaires/models.py:250
+msgid "NON DEFINITIVE"
+msgstr "غير دائمة"
+
+#: beneficiaires/models.py:251
+msgid "EVOLUTIVE"
+msgstr "متطورة"
+
+#: beneficiaires/models.py:255
+msgid "OUI"
+msgstr "نعم"
+
+#: beneficiaires/models.py:256
+msgid "NON"
+msgstr "لا"
+
+#: beneficiaires/models.py:266
+msgid "Type"
+msgstr "نوع الإعاقة"
+
+#: beneficiaires/models.py:267
+msgid "Degré"
+msgstr "درجة الإعاقة"
+
+#: beneficiaires/models.py:268
+msgid "Durée"
+msgstr "مدة الإعاقة"
+
+#: beneficiaires/models.py:269
+msgid "Assistance"
+msgstr "الحاجة الى مرافق"
+
+#: beneficiaires/models.py:270
+msgid "Description"
+msgstr "التوصيف"
+
+#: beneficiaires/models.py:271
+msgid "Date début"
+msgstr "تاريخ البداية"
+
+#: beneficiaires/models.py:272
+msgid "Cause"
+msgstr "السبب"
+
+#: beneficiaires/models.py:273
+msgid "Appareillé"
+msgstr "استعمال معين أو جهاز"
+
+#: beneficiaires/models.py:274
+msgid "Type Appareil"
+msgstr "نوع المعين أو الجهاز"
+
+#: beneficiaires/models.py:280
+msgid "Handicap"
+msgstr "الإعاقة"
+
+#~ msgid "Masuclin"
+#~ msgstr "ذكر"
+
+#~ msgid "CIN/ACTE"
+#~ msgstr "البطاقة الوطنية أو العقد"
+
+#~ msgid "Béni Mellal-Khénifra"
+#~ msgstr "بني ملال خنيفرة"
+
+#~ msgid "Casablanca-Settat"
+#~ msgstr "الدار البيضاء سطات"
+
+#~ msgid "Dakhla-Oued Ed Dahab"
+#~ msgstr "الداخلة واد الذهب"
+
+#~ msgid "Drâa-Tafilalet"
+#~ msgstr "درعة تافيلالت"
+
+#~ msgid "Fès-Meknès"
+#~ msgstr "فاس مكناس"
+
+#~ msgid "Guelmim-Oued Noun"
+#~ msgstr "كلميم وادنون"
+
+#~ msgid "Laâyoune-Sakia El Hamra"
+#~ msgstr "العيون الساقية الحمراء"
+
+#~ msgid "l'Oriental"
+#~ msgstr "الشرق"
+
+#~ msgid "Marrakech-Safi"
+#~ msgstr "مراكش اسفي"
+
+#~ msgid "Rabat-Salé-Kénitra"
+#~ msgstr "الرباط سلا القنيطرة"
+
+#~ msgid "Souss-Massa"
+#~ msgstr "سوس ماسة"
+
+#~ msgid "Tanger-Tétouan-Al Hoceïma"
+#~ msgstr "طنجة تطوان الحسيمة"
+
+#~ msgid "GUELMIM"
+#~ msgstr "كلميم"
+
+#~ msgid "ASSA-ZAG"
+#~ msgstr "آسا الزاك"
+
+#~ msgid "TAN-TAN"
+#~ msgstr "طانطان"
+
+#~ msgid "SIDI IFNI"
+#~ msgstr "سيدي إفني"
+
+#~ msgid "MARRAKECH"
+#~ msgstr "مراكش"
+
+#~ msgid "SAFI"
+#~ msgstr "أسفي"
+
+#~ msgid "Chichaoua"
+#~ msgstr "شيشاوة"
+
+#~ msgid "Al Haouz"
+#~ msgstr "الحوز"
+
+#~ msgid "El Kelaâ des Sraghna"
+#~ msgstr "قلعة السراغنة"
+
+#~ msgid "Essaouira"
+#~ msgstr "الصويرة"
+
+#~ msgid "Rehamna"
+#~ msgstr "الرحامنة"
+
+#~ msgid "Youssoufia"
+#~ msgstr "اليوسفية"
+
+#~ msgid "Errachidia"
+#~ msgstr "الرشيدية"
+
+#~ msgid "Ouarzazate"
+#~ msgstr "ورزازات"
+
+#~ msgid "Midelt"
+#~ msgstr "ميدلت"
+
+#~ msgid "Tinghir"
+#~ msgstr "تنغير"
+
+#~ msgid "Zagora"
+#~ msgstr "زاكورة"
+
+#~ msgid "Agadir Ida-Outanane"
+#~ msgstr "اكادير اداوتنان"
+
+#~ msgid "Inezgane-Aït Melloul"
+#~ msgstr "انزكان أيت ملول"
+
+#~ msgid "Chtouka-Aït Baha"
+#~ msgstr "اشتوكة ايت باها"
+
+#~ msgid "Taroudant"
+#~ msgstr "تارودانت"
+
+#~ msgid "Tiznit"
+#~ msgstr "تيزنيت"
+
+#~ msgid "Tata"
+#~ msgstr "طاطا"
+
+#~ msgid "Casablanca"
+#~ msgstr "الدار البيضاء"
+
+#~ msgid "Mohammédia"
+#~ msgstr "المحمدية"
+
+#~ msgid "El Jadida"
+#~ msgstr "الجديدة"
+
+#~ msgid "Nouaceur"
+#~ msgstr "النواصر"
+
+#~ msgid "Médiouna"
+#~ msgstr "مديونة"
+
+#~ msgid "Benslimane"
+#~ msgstr "بنسليمان"
+
+#~ msgid "Berrechid"
+#~ msgstr "برشيد"
+
+#~ msgid "Settat"
+#~ msgstr "سطات"
+
+#~ msgid "Sidi Bennour"
+#~ msgstr "سيدي بنور"
+
+#~ msgid "BOUIZAKARNE"
+#~ msgstr "بويزكارن"
+
+#~ msgid "TIMOULAY"
+#~ msgstr "تيمولاي"
+
+#~ msgid "FASK"
+#~ msgstr "فاصك"
+
+#~ msgid "ABAYNOU"
+#~ msgstr "اباينو"
+
+#~ msgid "Tan-Tan"
+#~ msgstr "طانطان"
+
+#~ msgid "Sidi Ifni"
+#~ msgstr "سيدي إفني"
+
+#, fuzzy
+#~| msgid "Bénéficiaire"
+#~ msgid "bénéficiaire"
+#~ msgstr "المستفيد"

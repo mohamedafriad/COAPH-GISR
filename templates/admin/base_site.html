@@ -1,0 +1,196 @@
+{% extends "admin/base_site.html" %}
+{% load i18n grp_tags %}
+{% block title %}{{ title }} | {% get_site_title %}{% endblock %}
+{% block extrastyle %}
+{{ block.super }}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
+</style>
+<style type="text/css">
+*, a, body, input, select, ul, li, label, table, form, div, form.div.fieldset.label, th, tr, td, form .form-row p,
+button.button, fieldset.grp-module .grp-row label, input.grp-button, input.vTextField, option, .grp-autocomplete-wrapper-m2m, .grp-autocomplete-wrapper-fk input.ui-autocomplete-input {
+   font-family: 'cairo', 'Ubuntu', 'KacstLetter', 'sans-serif';
+   font-style: normal;
+   /*font-size: 18px;
+   font-weight: bold;
+   src: local('Tajawal'), url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap') format('opentype');*/
+}
+#grp-navigation {
+    background-image: linear-gradient(#2ecc71,#2ecc71);
+    color: white;
+    text-shadow : none;
+}
+body.grp-login .grp-module-login h2 {
+    background-image: linear-gradient(#77cc6d,#77cc6d);
+    color: white;
+    text-shadow : none;
+    padding-right: 10%;
+}
+#grp-navigation a {
+    color : white;
+    text-shadow : none;
+}
+body.grp-login .grp-module-login h2 span.grp-current-page {
+    display: none;
+}
+div.grp-module h2, div.grp-module h2 a  {
+    background-image: linear-gradient(#77cc6d,#77cc6d);
+    text-shadow: none;
+    color: white;
+}
+table#result_list thead tr th div.grp-text a, table#result_list thead tr th div.grp-text, .grp-fixed-footer{
+    background-image: linear-gradient(#77cc6d,#77cc6d);
+    text-shadow: none;
+    color: white;
+}
+*, ul.grp-user-options li a span, .grp-filter .grp-row label, a.grp-pulldown-handler {
+    font-family: 'Roboto', 'Tajawal', 'Ubuntu', 'KacstLetter', 'sans-erif';
+}
+/*Barre fixe en bas*/
+.grp-submit-row.grp-fixed-footer > ul > li {
+    margin-bottom: 5px;
+    padding: 5px !important;
+    background: none;
+
+}
+.grp-submit-row.grp-fixed-footer > ul > li.grp-float-left {
+    background-image: #f6653c;
+}
+
+article#grp-content {
+    margin-top: 0%;
+    padding-top: 5%;
+}
+
+#id_centre {
+    width: 400px;
+}
+div.grp-selected, .highlighted {
+    background-color: pink;
+}
+option#activefilter {
+    background-color: pink;
+}
+ul#grp-user-tools>li.grp-user-options-container
+{
+    border-left : none;
+    border-right: none;
+    width : min-content;
+    float:left;
+}
+ul#grp-user-tools>li#menu-icon
+{
+    border-left : none;
+    border-right: none;
+    float: right;
+}
+ul#grp-user-tools>li#home-icon
+{
+    border-left : none;
+    border-right: none;
+    float: left;
+}
+header#grp-content-title h1 {
+    padding: 0px 0 10px;
+}
+/* STYLE DE LA BARRE DES FILTRES*/
+/*div#grp-filters {
+    top: 17%;
+    width: 19%;
+}
+div.grp-filter  {
+    position: fixed;
+    top: 15%;
+    width: 19%;
+}*/
+div.grp-filter.fixed-filters div.grp-pulldown-container {
+    position: fixed;
+    top: 17%;
+    width: 19%;
+    z-index: 20;
+}
+/* STYLE DE L ENTETE DU TABLEAU DES RESULTATS */
+table#result_list thead {
+    z-index: 10;
+    position: relative;
+}
+
+/*____*/
+/*STYLE DU MENU */
+div#admin_menu_container  {
+    padding: 0px;
+    font-size: 12px;
+    margin-bottom: 0%;
+    display : none;
+    z-index: 900000;
+}
+#admin_menu_container .tabs ul {
+    display: inline-grid;
+}
+#admin_menu_container .tabs ul ul {
+    top: 0%;
+    left: 100%;
+}
+#admin_menu_container {
+    background-color: #2B3746;
+    padding: 5px 10px 0 10px;
+    height: 0px;
+}
+#admin_menu_container .tabs ul li {
+    font-size: 10px;
+}
+#admin_menu_container .tabs ul li a {
+    padding: 5px 15px;
+}
+#admin_menu_container .tabs ul li:last-child a {
+    border-radius: 0 0px 4px 0;
+}
+#admin_menu_container .tabs ul li:first-child a {
+    border-radius: 0 0 0 0;
+}
+div.errorlist {
+  background-color: #E44B5E;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  color: white;
+  /*background-color: rgba(255, 255, 255, 0.75);*/
+  margin: 0 0 5px 0;
+  /*margin: 0 auto;*/
+  width: 50%;
+  /*padding: 1rem;*/
+  border: 0.125rem thin black;
+}
+
+/*Style des tooltip pour les erreurs des champs*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: visible;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+.tooltip .tooltiptext {
+  top: -5px;
+  left: 105%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+</style>
+{% endblock %}

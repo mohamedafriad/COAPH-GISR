@@ -1,0 +1,401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-29 23:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: projets/admin.py:57
+msgid "Détails"
+msgstr "تفاصيل المشروع"
+
+#: projets/admin.py:63
+msgid "Implantation"
+msgstr "مكان التنفيذ"
+
+#: projets/admin.py:69
+msgid "Finance"
+msgstr "مالية المشروع"
+
+#: projets/admin.py:75
+msgid "Pièces demandées"
+msgstr "الوثائق المطلوبة"
+
+#: projets/admin.py:81
+msgid "Infos d'exécution"
+msgstr "معلومات حول إنجاز المشروع"
+
+#: projets/apps.py:7
+msgid "projets"
+msgstr "المشاريع"
+
+#: projets/models.py:8
+msgid "Individuel"
+msgstr "فردي"
+
+#: projets/models.py:9
+msgid "Collectif"
+msgstr "جماعي"
+
+#: projets/models.py:13
+msgid "Auto-Entrepreneur"
+msgstr "المقاول الذاتي"
+
+#: projets/models.py:14
+msgid "RC/Personne Physique"
+msgstr "السجل التجاري / شخص ذاتي"
+
+#: projets/models.py:15
+msgid "Société"
+msgstr "شركة"
+
+#: projets/models.py:16
+msgid "Coopérative"
+msgstr "تعاونية"
+
+#: projets/models.py:17 projets/models.py:26 projets/models.py:46
+msgid "Autre"
+msgstr "آخر"
+
+#: projets/models.py:21
+msgid "Services"
+msgstr "الخدمات"
+
+#: projets/models.py:22
+msgid "Commerce"
+msgstr "التجارة"
+
+#: projets/models.py:23
+msgid "Industrie"
+msgstr "الصناعة"
+
+#: projets/models.py:24
+msgid "Transport"
+msgstr "النقل"
+
+#: projets/models.py:25
+msgid "Artisanat"
+msgstr "الصناعة التقليدية"
+
+#: projets/models.py:30
+msgid "Propriété"
+msgstr "الملكية"
+
+#: projets/models.py:31
+msgid "Promesse de location"
+msgstr "وعد بالكراء"
+
+#: projets/models.py:32
+msgid "Contrat de location"
+msgstr "عقد الكراء"
+
+#: projets/models.py:33
+msgid "Mise à disposition"
+msgstr "وضع رهن إشارة"
+
+#: projets/models.py:34 projets/models.py:128
+msgid "Engagement"
+msgstr "التزام بتوفير المحل"
+
+#: projets/models.py:38 projets/models.py:157
+msgid "Oui"
+msgstr "نعم"
+
+#: projets/models.py:39 projets/models.py:159
+msgid "Non"
+msgstr "لا"
+
+#: projets/models.py:43 projets/models.py:92 projets/models.py:305
+msgid "Bénéficiaire"
+msgstr "حامل المشروع"
+
+#: projets/models.py:44
+msgid "Tuteur (Père)"
+msgstr "ولي الامر (الأب)"
+
+#: projets/models.py:45
+msgid "Tuteur (Mère)"
+msgstr "ولي الأمر (الأم)"
+
+#: projets/models.py:50
+msgid "Titre"
+msgstr "رمز الدورة"
+
+#: projets/models.py:51
+msgid "Date Ouverture Session"
+msgstr "تاريخ افتتاح الدورة"
+
+#: projets/models.py:52
+msgid "Date Fermeture Session"
+msgstr "تاريخ انتهاء الدورة"
+
+#: projets/models.py:53
+msgid "Session Ouverte"
+msgstr "الدورة مفتوحة"
+
+#: projets/models.py:62 projets/models.py:143
+msgid "Session"
+msgstr "الدورة"
+
+#: projets/models.py:63
+msgid "Les Sessions"
+msgstr "الدورات"
+
+#: projets/models.py:67 projets/models.py:139 projets/models.py:174
+#: projets/models.py:281
+msgid "Etape"
+msgstr "المرحلة"
+
+#: projets/models.py:68
+msgid "Ordre"
+msgstr "الترتيب"
+
+#: projets/models.py:74
+msgid "Etape Demande"
+msgstr "مرحلة الطلب"
+
+#: projets/models.py:75
+msgid "Etapes Demande"
+msgstr "مراحل الطلب"
+
+#: projets/models.py:81
+msgid "Centre"
+msgstr "المركز"
+
+#: projets/models.py:96
+msgid "Intitulé"
+msgstr "اسم المشروع"
+
+#: projets/models.py:97
+msgid "Date demande"
+msgstr "تاريخ الطلب"
+
+#: projets/models.py:98
+msgid "Description"
+msgstr "التوصيف"
+
+#: projets/models.py:99
+msgid "Montant Global"
+msgstr "المبلغ الاجمالي"
+
+#: projets/models.py:100
+msgid "Montant Demandé"
+msgstr "المبلغ المطلوب"
+
+#: projets/models.py:101
+msgid "Contribution Personnelle"
+msgstr "المساهمة الشخصية"
+
+#: projets/models.py:102
+msgid "Secteur"
+msgstr "القطاع"
+
+#: projets/models.py:103
+msgid "Forme Juridique"
+msgstr "الصيغة القانونية"
+
+#: projets/models.py:104
+msgid "Nature projet"
+msgstr "طبيعة المشروع"
+
+#: projets/models.py:107
+msgid "Région Implantation"
+msgstr "الجهة"
+
+#: projets/models.py:116
+msgid "Province Implantation"
+msgstr "العمالة أو الإقليم"
+
+#: projets/models.py:122
+msgid "Commune Implantation"
+msgstr "الجماعة"
+
+#: projets/models.py:124
+msgid "Lieu Implantation"
+msgstr "مكان التنفيذ"
+
+#: projets/models.py:124
+msgid "Guelmim"
+msgstr "كلميم"
+
+#: projets/models.py:125
+msgid "Copie CIN"
+msgstr "نسخة من البطاقة الوطنية"
+
+#: projets/models.py:126
+msgid "Copie RAMED"
+msgstr "نسخة من الراميد"
+
+#: projets/models.py:127
+msgid "Certificat Médical"
+msgstr "الشهادة الطبية"
+
+#: projets/models.py:129
+msgid "Devis"
+msgstr "عرض الأثمان التقديري"
+
+#: projets/models.py:130
+msgid "Local"
+msgstr "مقر انجاز المشروع"
+
+#: projets/models.py:131
+msgid "Convention accompagnement"
+msgstr "اتفاقية المواكبة"
+
+#: projets/models.py:132
+msgid "Convention Financement"
+msgstr "اتفاقية التمويل"
+
+#: projets/models.py:133
+msgid "Num Chèque"
+msgstr "رقم الشيك"
+
+#: projets/models.py:134
+msgid "Date Chèque"
+msgstr "تاريخ الشيك"
+
+#: projets/models.py:135
+msgid "Date lancement"
+msgstr "تاريخ الانطلاقة"
+
+#: projets/models.py:149 projets/models.py:232 projets/models.py:256
+#: projets/models.py:275 projets/models.py:299
+msgid "Projet"
+msgstr "المشروع"
+
+#: projets/models.py:150
+msgid "Projets"
+msgstr "المشاريع"
+
+#: projets/models.py:160
+msgid "Dossier Complet"
+msgstr "ملف مكتمل"
+
+#: projets/models.py:188 projets/models.py:283
+msgid "Date étape"
+msgstr "تاريخ المرحلة"
+
+#: projets/models.py:202 projets/models.py:284
+msgid "Commentaire"
+msgstr "ملاحظات"
+
+#: projets/models.py:212
+msgid "Bénéficiaires"
+msgstr "حامل المشروع"
+
+#: projets/models.py:216
+msgid "PROVINCIALE"
+msgstr "اللجنة الإقليمية"
+
+#: projets/models.py:217
+msgid "REGIONALE"
+msgstr "اللجنة الجهوية"
+
+#: projets/models.py:218
+msgid "CENTRALE"
+msgstr "اللجنة المركزية"
+
+#: projets/models.py:222
+msgid "VALIDE"
+msgstr "مقبول"
+
+#: projets/models.py:223
+msgid "REJETE"
+msgstr "غير مقبول"
+
+#: projets/models.py:224
+msgid "A REFAIRE"
+msgstr "اعادة الصياغة"
+
+#: projets/models.py:235
+msgid "Commission"
+msgstr "اللجنة"
+
+#: projets/models.py:236
+msgid "Date avis"
+msgstr "تاريخ ابداء الرأي"
+
+#: projets/models.py:237
+msgid "Numéro PV"
+msgstr "رقم المحضر"
+
+#: projets/models.py:238
+msgid "Décision"
+msgstr "القرار"
+
+#: projets/models.py:239
+msgid "Note"
+msgstr "التنقيط"
+
+#: projets/models.py:240 projets/models.py:260
+msgid "Observation"
+msgstr "ملاحظات"
+
+#: projets/models.py:241
+msgid "Montant approuvé"
+msgstr "المبلغ المصادق عليه"
+
+#: projets/models.py:242
+msgid "Nombre tranches"
+msgstr "عدد الأشطر"
+
+#: projets/models.py:248 projets/models.py:249
+msgid "Avis"
+msgstr "رأي"
+
+#: projets/models.py:259
+msgid "Date visite"
+msgstr "تاريخ الزيارة"
+
+#: projets/models.py:266
+msgid "Visite"
+msgstr "الزيارة"
+
+#: projets/models.py:267
+msgid "Visites"
+msgstr "الزيارات"
+
+#: projets/models.py:290
+msgid "Etape Projet"
+msgstr "مرحلة المشروع"
+
+#: projets/models.py:291
+msgid "Etapes Projet"
+msgstr "مراحل المشروع"
+
+#: projets/models.py:307
+msgid "Nature Tuteur"
+msgstr "طبيعة حامل المشروع"
+
+#: projets/models.py:308
+msgid "Nom Tuteur"
+msgstr "اسم ولي الأمر"
+
+#: projets/models.py:309
+msgid "CIN Tuteur"
+msgstr "رقم بطاقة ولي الأمر"
+
+#: projets/models.py:318
+msgid "Porteur Projet"
+msgstr "حامل المشروع"
+
+#: projets/models.py:319
+msgid "Porteurs Projet"
+msgstr "حامل المشروع"
+
+#~ msgid "CIN"
+#~ msgstr "رقم البطاقة الوطنية"

@@ -46,6 +46,7 @@ urlpatterns = [
     path('backend/logout/', front_views.backlogout, name="b-logout"),
     path('backend/projets/', front_views.list_projets, name="f-projets"),
     path('backend/projets/<num_demande>/', front_views.details_agr, name="f-details-agr"),
+    path('backend/dashboard/', front_views.dashboard, name="b-dashboard"),
     path('backend/psh/', front_views.list_psh, name="b-psh"),
     path('grappelli/', include('grappelli.urls')), # grappelli URL
     #path('admin/attestation/html/', attestation_views.ModelPdf.as_view()),

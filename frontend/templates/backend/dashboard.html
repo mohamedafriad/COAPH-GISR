@@ -1,0 +1,338 @@
+{% extends "frontend/index.html" %}
+{% load static %}{% load i18n grp_tags %}
+{% block title %}خدماتي - COAPH - الفضاء الخاص{% endblock %}
+{% block extrahead %}
+<style>
+    .card-counter{
+    box-shadow: 2px 2px 10px #DADADA;
+    margin: 5px;
+    padding: 20px 10px;
+    background-color: #fff;
+    height: 100px;
+    border-radius: 5px;
+    transition: .3s linear all;
+  }
+
+  .card-counter:hover{
+    box-shadow: 4px 4px 20px #DADADA;
+    transition: .3s linear all;
+  }
+
+  .card-counter.primary{
+    background-color: #007bff;
+    color: #FFF;
+  }
+
+  .card-counter.danger{
+    background-color: #ef5350;
+    color: #FFF;
+  }
+
+  .card-counter.success{
+    background-color: #66bb6a;
+    color: #FFF;
+  }
+
+  .card-counter.info{
+    background-color: #26c6da;
+    color: #FFF;
+  }
+
+  .card-counter i{
+    font-size: 5em;
+    opacity: 0.2;
+  }
+
+  .card-counter .count-numbers{
+    position: absolute;
+    right: 35px;
+    top: 20px;
+    font-size: 32px;
+    display: block;
+  }
+
+  .card-counter .count-name{
+    position: absolute;
+    right: 35px;
+    top: 65px;
+    font-style: italic;
+    text-transform: capitalize;
+    opacity: 0.5;
+    display: block;
+    font-size: 18px;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<!-- Heading Row-->
+  <h1><center>{% if centre %}{{ centre.nom }}{% else %}{% blocktrans %}Au niveau national{% endblocktrans %}{% endif %}</center></h1>
+  <hr /><br />
+  <h2><center>{% blocktrans %}Répartition des demandes de prothèses par Sexe{% endblocktrans %}</center></h2>
+  <hr>
+  <table class="table table-bordered border-primary">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">الذكور</th>
+        <th scope="col">الإناث</th>
+        <th scope="col">المجموع</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">عدد الطلبات</th>
+        <td>{{ demande_mas }}</td>
+        <td>{{ demande_fem }}</td>
+        <td>{{ demande_tot }}</td>
+      </tr>
+    </tbody>
+  </table>
+<div class="row">
+<div class="col-md-2">
+      <div class="card-counter primary">
+        <i class="fas fa-male"></i>
+        <span class="count-numbers">{{ demande_mas}}</span>
+        <span class="count-name">الذكور</span>
+      </div>
+</div>
+<div class="col-md-2">
+      <div class="card-counter danger">
+        <i class="fas fa-female"></i>
+        <span class="count-numbers">{{ demande_fem }}</span>
+        <span class="count-name">الإناث</span>
+      </div>
+</div>
+<div class="col-md-3">
+      <div class="card-counter success">
+        <i class="fas fa-restroom"></i>
+        <span class="count-numbers">{{ demande_tot }}</span>
+        <span class="count-name">المجموع</span>
+      </div>
+</div>
+<div class="col-md-4">
+  <canvas id="gender-chart" style="width: 100px !important;"></canvas>
+</div>
+</div>
+<hr />
+<h2><center>{% blocktrans %}Répartition des demandes de prothèses par tranche d'age{% endblocktrans %}</center></h2>
+<hr />
+<div class="row">
+  <table class="table table-bordered border-info">
+    <thead class="table-info">
+      <tr>
+        <th scope="col">الفئة العمرية</th>
+        <th scope="col">{{ tranch_label1 }}</th>
+        <th scope="col">{{ tranch_label2 }}</th>
+        <th scope="col">{{ tranch_label3 }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">عدد الطلبات</th>
+        <td>{{ tranch1 }}</td>
+        <td>{{ tranch2 }}</td>
+        <td>{{ tranch3 }}</td>
+      </tr>
+    </tbody>
+  </table>
+<div class="col-md-3">
+      <div class="card-counter primary">
+        <i class="fa fa-child"></i>
+        <span class="count-numbers">{{ tranch1 }}</span>
+        <span class="count-name">{{ tranch_label1 }}</span>
+      </div>
+</div>
+<div class="col-md-3">
+      <div class="card-counter success">
+        <i class="fa fa-user"></i>
+        <span class="count-numbers">{{ tranch2 }}</span>
+        <span class="count-name">{{ tranch_label2 }}</span>
+      </div>
+</div>
+<div class="col-md-3">
+      <div class="card-counter info">
+        <i class="fa fa-blind"></i>
+        <span class="count-numbers">{{ tranch3 }}</span>
+        <span class="count-name">{{ tranch_label3 }}</span>
+      </div>
+</div>
+<div class="col-md-3">
+  <canvas id="language-chart" style="width: 100px !important;"></canvas>
+</div>
+</div>
+<hr />
+<h2><center>{% blocktrans %}Répartition des demandes de prothèses par etape{% endblocktrans %}</center></h2>
+<hr />
+<table class="table table-bordered border-info">
+  <thead class="table-info">
+    <tr>
+      <th scope="col">مرحلة الطلب</th>
+      <th scope="col">في طور المعالجة</th>
+      <th scope="col">أخذ القياس</th>
+      <th scope="col">تمت المعالجة والتسليم</th>
+      <th scope="col">لم تتم الاستجابة للطلب</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">عدد الطلبات</th>
+      <td>{{ demande_cours }}</td>
+      <td>{{ demande_mesure }}</td>
+      <td>{{ demande_clot }}</td>
+      <td>{{ demande_refus }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+    <div class="col-md-3">
+      <div class="card-counter info">
+        <i class="fas fa-spinner"></i>
+        <span class="count-numbers">{{ demande_cours }}</span>
+        <span class="count-name">في طور المعالجة</span>
+      </div>
+      <div class="progress" style="height: 20px;">
+          <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-counter primary">
+        <i class="fas fa-drafting-compass"></i>
+        <span class="count-numbers">{{ demande_mesure }}</span>
+        <span class="count-name">أخذ القياس</span>
+      </div>
+      <div class="progress" style="height: 20px;">
+          <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-counter success">
+        <i class="fas fa-check-circle"></i>
+        <span class="count-numbers">{{ demande_clot }}</span>
+        <span class="count-name">تم التركيب والتسليم</span>
+      </div>
+      <div class="progress" style="height: 20px;">
+          <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-counter danger">
+        <i class="fas fa-times-circle"></i>
+        <span class="count-numbers">{{ demande_refus }}</span>
+        <span class="count-name">مرفوض</span>
+      </div>
+      <div class="progress" style="height: 20px;">
+          <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+      </div>
+    </div>
+</div>
+<hr />
+<h2><center>{% blocktrans %}Satisfaction des demandes de prothèses{% endblocktrans %}</center></h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+      <div class="card-counter success">
+        <i class="fas fa-check-circle"></i>
+        <span class="count-numbers">{{ demande_clot }}  {{ pourc_clot|floatformat:2 }} </span>
+        <span class="count-name">{% blocktrans %}Demandes satisfaites{% endblocktrans%}</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-counter info">
+        <i class="fas fa-spinner"></i>
+        <span class="count-numbers">{{ demande_cours_mesure }}  {{ pourc_cours|floatformat:2 }}</span>
+        <span class="count-name">{% blocktrans %}Demandes en cours{% endblocktrans%}</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-counter danger">
+        <i class="fa fa-times-circle"></i>
+        <span class="count-numbers">{{ demande_refus }}  {{ pourc_refus|floatformat:2 }}</span>
+        <span class="count-name">{% blocktrans %} Demandes non satisfaites{% endblocktrans %}</span>
+      </div>
+    </div>
+</div>
+
+    <!--<h2> Répartition des demandes de prothèses par Sexe </h2>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4">
+            <h5>Répartition des demandes de prothèses par <b>Sexe</b></h5>
+            <canvas id="gender-chart" style="width: 100px !important;"></canvas>
+        </div>
+        <div class="col-sm-4">
+            <h5>Répartition des demandes de prothèses par <b>Tranche d'age</b></h5>
+            <canvas id="language-chart" style="width: 100px !important;"></canvas>
+        </div>
+        <div class="col-sm-4">
+            <h5>Répartition des demandes de prothèses par Sexe</h5>
+            <canvas id="sexe-chart" style="width: 100px !important;"></canvas>
+        </div>-->
+</div>
+  </div>
+{% endblock %}
+{% block extrascripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+    <script>
+        var randomColorGenerator = function () {
+            return '#' + (Math.random().toString(16) + '0000000').slice(2, 8);
+        };
+        var options_1 = {
+            responsive: true,
+            maintainAspectRatio: true,
+            legend: {
+                display: true,
+                position: 'left'
+            },
+            title: {
+                display: false,
+                text: 'Par Sexe',
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        };
+        var options_2 = {
+            responsive: true,
+            maintainAspectRatio: true,
+            legend: {
+                display: true,
+                position: 'left'
+            },
+            title: {
+                display: false,
+                text: "Par tranche d'age",
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        };
+        window.onload = function () {
+            var ctx = document.getElementById("gender-chart");
+            var lineChart = new Chart(ctx, {
+                type: 'pie', //doughnut
+                data: {
+                    labels: ["{{ label1 }}", "{{ label2 }}"],
+                    datasets: [{
+                        data: [{{ demande_mas }}, {{ demande_fem }}],
+                        backgroundColor: ['#007bff', '#ef5350']
+                    }]
+                },
+                options: options_1
+            });
+            var cts = document.getElementById("language-chart");
+            var lineChart = new Chart(cts, {
+                type: 'doughnut', //doughnut
+                data: {
+                    labels: ['{{ tranch_label1 }}', '{{ tranch_label2 }}', '{{ tranch_label3 }}'],
+                    datasets: [{
+                        data: [{{ tranch1 }}, {{ tranch2 }}, {{ tranch3 }}],
+                        backgroundColor: ['#007bff', '#ef5350', '#66bb6a']
+                    }]
+                },
+                options: options_2
+            });
+        }
+</script>
+{% endblock %}

@@ -125,4 +125,12 @@ def list_psh(request):
         return redirect('b-login')
 
 
+def dashboard(request):
+    if request.session.get('is_authenticated', False) :
+        projets = Projet.objects.all()
+        return render(request, template_name="backend/dashboard.html", context={'projets': projets})
+    else:
+        return redirect('b-login')
+
+
 

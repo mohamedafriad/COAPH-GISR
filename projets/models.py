@@ -1,8 +1,9 @@
 from django.db import models
 from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
+from django.contrib.auth.models import User
 from beneficiaires.models import Beneficiaire
-from centres.models import Centre, Region, Province, Commune
+from centres.models import Centre, Region, Province, Commune, Membre
 
 NATURE_PROJET=(
     (1, _('Individuel')),
@@ -326,3 +327,23 @@ class ExecuteurProjet(models.Model):
     class Meta:
         verbose_name = _('Porteur Projet')
         verbose_name_plural = _('Porteurs Projet')
+
+
+class Note(models.Model):
+    projet = models.ForeignKey(
+        Projet,
+        related_name = 'notes',
+        on_delete = models.CASCADE,
+        verbose_name = _('Projet')
+    )
+    user = models.ForeignKey(
+        User,
+        related_name = 'notes',
+        on_delete = models.SET_NULL,
+        null = True
+    )
+    commission = models.PositiveSmallIntegerField(_("Commission"), choices=COMMISSION_CHOIX, default=1)
+    note_profil = models.PositiveSmallIntegerField(_("Note Profil entrepreneurial"), default=0)
+    note_viabilite = models.PositiveSmallIntegerField(_("Note Viabilité du projet"), default=0)
+    note_finance = models.PositiveSmallIntegerField(_("Note Aspects financiers"), default=0)
+    note_totale = models.PositiveSmallIntegerField(_("Note Totale"), default=0)

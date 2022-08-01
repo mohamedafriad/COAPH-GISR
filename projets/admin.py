@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.translation import gettext as _
-from .models import Projet, Avis, SuiviProjet, ExecuteurProjet, EtapeProjet, Session
+from .models import Projet, Avis, SuiviProjet, ExecuteurProjet, EtapeProjet, Session, Note
 from centres.models import Centre
 
 @admin.register(Session)
@@ -19,6 +19,12 @@ class ExecuteurProjetInline(admin.StackedInline):
     autocomplete_fields = ['beneficiaire',]
 
 
+class NoteInline(admin.TabularInline):
+    model = Note
+    extra = 0
+    autocomplete_fields = ['projet', 'user']
+
+
 class AvisInline(admin.StackedInline):
     model = Avis
     extra = 0
@@ -31,7 +37,7 @@ class SuiviProjetInline(admin.TabularInline):
 
 @admin.register(Projet)
 class ProjetAdmin(admin.ModelAdmin):
-    inlines = [ExecuteurProjetInline, AvisInline, SuiviProjetInline]
+    inlines = [ExecuteurProjetInline, AvisInline, SuiviProjetInline, NoteInline]
     list_display = ('get_beneficiaires', 'date_demande', 'intitule', 'montant_demande', 'secteur', 'dossier_est_complet', 'date_lancement', 'get_etape', 'get_etape_date', 'get_etape_commentaire')
     filter_horizontal = ['beneficiaire',]
     list_filter = (
@@ -41,6 +47,7 @@ class ProjetAdmin(admin.ModelAdmin):
         'date_demande',
         'secteur',
     )
+    search_fields = ['intitule',]
     autocomplete_fields = ['centre', 'lieu_region', 'lieu_province', 'lieu_commune']
     radio_fields = {
         'piece_cin': admin.HORIZONTAL,

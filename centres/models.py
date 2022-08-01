@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext as _
 from agr.CHOICES_LISTS import *
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 from django.conf import settings
 
 MILIEU_CHOIX=(
@@ -119,3 +119,25 @@ class Centre(models.Model):
     class Meta:
         verbose_name = _('Centre')
         verbose_name_plural = _('Centres')
+
+ORGANISMES=(
+    ('EN REG', 'Entraide Nationale Regionale'),
+    ('EN PROV', 'Entraide Nationale Provinciale'),
+    ('ANAPEC REG', 'ANAPEC Regionale'),
+    ('ANAPEC PROV', 'ANAPEC Provinciale'),
+    ('ADS', 'ADS'),
+    ('INDH', 'INDH'),
+)
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+class Membre(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    region = models.ForeignKey(Region, on_delete=models.SET_NULL, related_name="membres", null=True)
+    province = models.ForeignKey(Province, on_delete=models.SET_NULL, related_name="membres", null=True, blank=True)
+    organisme = models.CharField(_('Organisme'), max_length=300, blank=True, choices=ORGANISMES)
+
+    def __str__(self):
+        return self.user.username
+

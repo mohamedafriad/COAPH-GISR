@@ -36,8 +36,8 @@
             var grappelli = {},
                 ADMIN_URL = "{% url 'admin:index' %}",
                 MODEL_URL_ARRAY = {% if user.is_staff %}{% get_content_types %}{% else %}[]{% endif %},
-                DATE_FORMAT = "YY/MM/DD",
-                //DATE_FORMAT = "{% get_date_format %}",
+                //DATE_FORMAT = "DD/MM/YY",
+                DATE_FORMAT = "{% get_date_format %}",
                 TIME_FORMAT = "{% get_time_format %}",
                 DATETIME_FORMAT = "{% get_datetime_format %}";
         </script>

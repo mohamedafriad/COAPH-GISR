@@ -45,6 +45,14 @@ NATURE_TUTEUR=(
     (3, _('Tuteur (Mère)')),
     (4, _('Autre')),
 )
+'''
+class Structure(object):
+    nom = models.CharField(_('Nom Structure'), max_length=500)
+
+
+class Note(object):
+    projet = models.ForeignKey()
+'''
 
 class Session(models.Model):
     titre = models.CharField(_('Titre'), max_length=500)
@@ -256,8 +264,9 @@ class Visite(models.Model):
         verbose_name = _("Projet"),
         related_name = "visites"
     )
-    date_visite = models.DateField(_('Date visite'))
+    date_visite = models.DateTimeField(_('Date visite'))
     observation = models.CharField(_('Observation'), blank=True, max_length=700, null=True)
+    #numero= models.CharField(_('Numero'))
 
     def __str__(self):
         return "{}".format(self.date_visite)

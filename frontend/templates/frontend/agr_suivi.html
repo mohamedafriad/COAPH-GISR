@@ -6,77 +6,72 @@
 </script>
 {% endblock %}
 {% block content %}
-<div class="row gx-4 gx-lg-6 align-items-center my-5 justify-content-center">
-  <div class="col-6  align-items-center">
-    <div class="card col-md-12 h-100 align-items-center">
-      <h3 class="card-header col-md-12 text-center">تتبع المشاريع المدرة للدخل</h3>
-      <div class="card-body">
-        <div class="card-text">
-            <form class="form">
-                <div class="text-center">
-                <input class="form-control" type="text" required name="num_demande" placeholder="قم بإدخال رقم الطلب هنا" id="numeroD"/>
-                </div>
-            </form>
-        </div>
-      </div>
-      <div class="card-footer col-md-12 text-center">
-        <button class="btn btn-danger" id="get_dem" onclick="btnClicked()">البحث</button>
-        <a id="num_dem" href="{% url 'f-suivi-agr' %}" class="btn-info" hidden>البحث</a>
-      </div>
-    </div>
+<div class="row gx-4 gx-lg-6 my-4 d-flex align-items-center justify-content-center">
+<h3 class="col-12 text-center">تتبع المشاريع المدرة للدخل</h3>
+</div>
+<form method="get" class="form d-flex align-items-center justify-content-center">
+<div class="row">
+  <div class="col-8">
+    <input class="form-control" type="text" required name="num_demande" placeholder="قم بإدخال رقم الطلب هنا" id="numeroD"/>
+  </div>
+  <div class="col-4">
+    <button class="btn btn-primary h-100" id="get_dem" type="sumbit"><i class="fas fa-search"></i> البحث</button>
   </div>
 </div>
+</form>
 {% if error %}
-  <p class="alert alert-danger">لا يوجد أي طلب بهذا الرقم. المرجو تصحيح رقم الطلب</p>
+<div class="d-flex justify-content-center col-12 my-4">
+     <p class="alert alert-danger col-12"><i class="fas fa-circle-exclamation"></i> لا يوجد أي طلب بهذا الرقم. المرجو تصحيح رقم الطلب</p>
+</div>
 {% else %}
 {% if projet.pk %}
 <div class="row gx-4 gx-lg-5 align-items-center my-5">
   <div class="col-md-12 align-items-center">
     <div class="card col-md-12 h-100 align-items-center">
-      <h3 class="card-header col-md-12 text-center"><center>معلومات حول الطلب</center></h3>
+      <h3 class="card-header col-12 text-center"><center>معلومات حول الطلب</center></h3>
       <div class="card-body">
         <div class="card-text">
           <form class="row g-3">
-            <div class="col-md-6">
-              <label for="projet_pk" class="form-label">رقم الطلب</label>
-              <input type="text" name="projet_pk" class="input" disabled value="{{ projet.pk}}" />
+            <div class="col-md-6 col-sm-12">
+              <label for="projet_pk" class="form-label col-3">رقم الطلب</label>
+              <input type="text" name="projet_pk" class="input" disabled value="{{ projet.pk}}" class="form-control col-9" readonly/>
             </div>
-            <div class="col-md-6">
-              <label for="projet_dated" class="form-label">تاريخ الطلب</label>
-              <input type="text" name="projet_dated" class="input" disabled value="{{ projet.date_demande}}" />
+            <div class="col-md-6  col-sm-12">
+              <label for="projet_dated" class="form-label col-3">تاريخ الطلب</label>
+              <input type="text" name="projet_dated" class="input" disabled value="{{ projet.date_demande}}" class="form-control col-9" readonly />
             </div>
             {% for ben in projet.porteur.all %}
-            <div class="col-md-6">
-              <label class="form-label" for="projet_ben">حامل المشروع</label>
-              <input type="text" name="projet_ben" class="input" disabled value="{{ ben.beneficiaire.nom_ar}} {{ ben.beneficiaire.prenom_ar}}" />
+            <div class="col-md-6  col-sm-12">
+              <label class="form-label col-3" for="projet_ben">حامل المشروع</label>
+              <input type="text" name="projet_ben" class="input" disabled value="{{ ben.beneficiaire.nom_ar}} {{ ben.beneficiaire.prenom_ar}}" class="form-control col-9" readonly />
             </div>
-            <div class="col-md-6">
-              <label class="form-label" for="projet_cin">رقم البطاقة الوطنية</label>
-              <input type="text" name="projet_cin" class="input" disabled value="{{ ben.beneficiaire.cin}}" />
+            <div class="col-md-6  col-sm-12">
+              <label class="form-label col-3" for="projet_cin">رقم البطاقة الوطنية</label>
+              <input type="text" name="projet_cin" class="input" disabled value="{{ ben.beneficiaire.cin}}" class="form-control col-9" readonly />
             </div>
             {% endfor %}
-            <div class="col-md-6">
-              <label class="form-label" for="projet_etap">مرحلة الطلب</label>
-              <input type="text" class="input" disabled name="projet_etap" value="{{ projet.get_etape }}" />
+            <div class="col-md-6 col-sm-12">
+              <label class="form-label col-3" for="projet_etap">مرحلة الطلب</label>
+              <input type="text" class="input" disabled name="projet_etap" value="{{ projet.get_etape }}" class="form-control col-9" readonly />
             </div>
-            <div class="col-md-6">
-              <label class="form-label" for="projet_etapd">تاريخ المرحلة</label>
-              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.get_etape_date }}" />
+            <div class="col-md-6  col-sm-12">
+              <label class="form-label col-3" for="projet_etapd">تاريخ المرحلة</label>
+              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.get_etape_date }}" class="form-control col-9" readonly />
             </div>
-            <div class="col-md-6">
-              <label class="form-label" for="projet_etapd">اسم المشروع</label>
-              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.intitule }}" />
+            <div class="col-md-6  col-sm-12">
+              <label class="form-label col-3" for="projet_etapd">اسم المشروع</label>
+              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.intitule }}" class="form-control col-9" readonly />
             </div>
-            <div class="col-md-6">
-              <label class="form-label" for="projet_etapd">المبلغ المطلوب</label>
-              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.montant_demande }}" />
+            <div class="col-md-6  col-sm-12">
+              <label class="form-label col-3" for="projet_etapd">المبلغ المطلوب</label>
+              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.montant_demande }}" class="form-control col-9" readonly />
             </div>
           </form>
         </div>
       </div>
       <div class="card-footer">
         <div class="qrcode align-items-center">
-          {% qr_from_text "{{ projet.pk }}" size="t" image_format="svg" error_correction="L" %}
+          {% qr_from_text "{{ projet.pk }}" size="s" image_format="svg" error_correction="L" %}
         </div>
       </div>
     </div>
@@ -85,7 +80,7 @@
 <div class="row gx-4 gx-lg-5 align-items-center my-5">
   <div class="col-md-12 align-items-center">
     <div class="card col-md-12 h-100 align-items-center">
-      <h3 class="card-header col-md-12 text-center"><center>مراحل معالجة الطلب</center></h3>
+      <h3 class="card-header col-12 text-center"><center>مراحل معالجة الطلب</center></h3>
       <div class="card-body col-md-12">
         <table class="table table-hover col-md-12">
           <thead>
@@ -110,13 +105,15 @@
   </div>
 </div>
 {% else %}
+<div class="row my-2">
   <p class="alert alert-info">المرجو إدخال رقم الطلب في الخانة المخصصة لذلك قبل الضغط على زر البحث. وشكرا</p>
+</div>
 {% endif %}
 {% endif %}
 {% endblock %}
 {% block extrascripts %}
 <script type="text/javascript">
-var btn=document.getElementById("get_dem");
+/*var btn=document.getElementById("get_dem");
 function btnClicked(e){
   let link=document.getElementById("num_dem");
   let numero=document.getElementById("numeroD");
@@ -124,6 +121,6 @@ function btnClicked(e){
     link.href = '{% url "f-suivi-agr" %}' + numero.value + '/';
     link.click();
   }
-};
+};*/
 </script>
 {% endblock %}

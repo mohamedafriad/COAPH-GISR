@@ -2,20 +2,25 @@
 {% load static %}{% load l10n %}
 {% block extrahead %}
 <style>
+.scrollview {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
 </style>
 {% endblock %}
 {% block content %}
-<div class="row gx-2 gx-lg-5 align-items-center my-5 justify-content-center">
+<div class="row gx-1 gx-lg-5 align-items-center my-5 justify-content-center">
     <div class="col-12 d-flex justify-content-center">
-        <div class="card h-100 col-12">
+        <div class="card h-100 col-12 col-sm-12">
             <div class="card-header text-center">
-                <h4 class="font-weight-light"> البحث عن مركز توجيه ومساعدة الأشخاص في وضعية إعاقة</h4>
+                <h4 class="font-weight-light"> لائحة طلبات دعم المشاريع المدرة للدخل</h4>
             </div>
             <div class="card-body justify-content-between">
-                <form class="form row gx-sm-2 gx-4" method="get">
+                <form class="form row gx-sm-1 gx-4" method="get">
                     <div class="col-5">
                         <select class="form-select text-center" name="region" id="region" placeholder="الجهة">
-                            <option value="null">الجهة</option>
+                            <option value="0">الجهة</option>
                             {% for region in regions %}
                                 <option value="{{ region.pk }}">{{ region.nom}}</option>
                             {% endfor %}
@@ -23,7 +28,7 @@
                     </div>
                     <div class="col-5">
                         <select class="form-select text-center" name="province" id="province" placeholder="الإقليم">
-                            <option value="null">الإقليم</option>
+                            <option value="0">الإقليم</option>
                             {% for province in provinces %}
                                 <option value="{{ province.pk }}">{{ province.nom}}</option>
                             {% endfor %}
@@ -41,24 +46,30 @@
         </div>
     </div>
 </div>
-<div class="row gx-4 gx-lg-5 align-items-center my-5">
+<div class="row gx-4 gx-lg-5 align-items-center my-5 scrollview">
     <div class="col-sm-12">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th><i class="fas fa-home"></i> اسم المركز</th>
-                    <th><i class="fas fa-phone"></i> رقم الهاتف</th>
-                    <th><i class="fas fa-location-dot"></i> العنوان</th>
-                    <th><i class="fas fa-map-location"></i> الموقع الجغرافي</th>
+                    <th>رقم الطلب </th>
+                    <th>اسم المشروع</th>
+                    <th>القطاع</th>
+                    <th>المرحلة</th>
+                    <th>تاريخ المرحلة</th>
+                    <th>المبلغ المطلوب</th>
+                    <th>التفاصيل</th>
                 </tr>
             </thead>
             <tbody>
-                {% for centre in centres %}
+                {% for projet in projets %}
                 <tr>
-                    <td>{{ centre.nom }}</td>
-                    <td>{{ centre.telephone }}</td>
-                    <td>{{ centre.adresse }}</td>
-                    <td><a href="{% url 'f-centre' pk=centre.pk %}">الموقع الجغرافي</a></td>
+                    <td>{{ projet.id }}</td>
+                    <td>{{ projet.intitule }}</td>
+                    <td>{{ projet.get_secteur_display }}</td>
+                    <td>{{ projet.get_etape }}</td>
+                    <td>{{ projet.get_etape_date }}</td>
+                    <td>{{ projet.montant_demande }}</td>
+                    <td><a href="{% url 'f-details-agr' num_demande=projet.pk %}" alt="détails"><i class="fas fa-eye"></i> </a></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -67,5 +78,4 @@
     </div>
 {% endblock %}
 {% block extrascripts %}
-
 {% endblock %}

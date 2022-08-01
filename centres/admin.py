@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Centre, Region, Province, Commune
+from .models import Centre, Region, Province, Commune, Membre
 from agr.actions import export_as_xls
 from django.contrib.auth.admin import GroupAdmin as BaseGroupAdmin
 from django.contrib.auth.models import Group
@@ -23,13 +23,18 @@ class CentreAdmin(admin.ModelAdmin):
     actions_on_top = True
     list_select_related = ('region', 'province', 'commune', 'gerant')
 
-    # def get_queryset(self, request):
-    #     qs = super(CentreAdmin, self).get_queryset(request)
-    #     if request.user.is_superuser:
-    #         return qs
-    #     return qs.filter(gerant__id=request.user.groups.get().id)
+    def get_queryset(self, request):
+        qs = super(CentreAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        elif request.user.membre.province:
+            return qs.filter(province=request.user.membre.province)
+        elif request.user.membre.region:
+            return qs.filter(region=request.user.membre.region)
+        else:
+            return qs
 
-    def has_change_permission(self, request, obj=None):
+    '''def has_change_permission(self, request, obj=None):
         if obj is None:
             return False
         if request.user.is_superuser:
@@ -37,7 +42,7 @@ class CentreAdmin(admin.ModelAdmin):
         elif request.user.groups.get().id == obj.gerant.id:
             return True
         else:
-            return False
+            return False'''
 
     def get_form(self, request, obj=None, **kwargs):
         form = super(CentreAdmin, self).get_form(request, obj, **kwargs)
@@ -93,3 +98,4 @@ class GroupAdmin(BaseGroupAdmin):
 
 admin.site.unregister(Group)
 admin.site.register(Group, GroupAdmin)
+admin.site.register(Membre)

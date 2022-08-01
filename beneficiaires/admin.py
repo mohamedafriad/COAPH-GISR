@@ -67,6 +67,18 @@ class BeneficiaireAdmin(admin.ModelAdmin):
         	'fields':('situation_fam', 'couverture_soc', 'ramed', ('ramed_exp_mois', 'ramed_exp_annee'), 'situation_prof', 'profession', 'scolarite')
         }),
     )
+
+    def get_queryset(self, request):
+        qs = super(BeneficiaireAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        elif request.user.membre.province:
+            return qs.filter(adresse_province=request.user.membre.province)
+        elif request.user.membre.region:
+            return qs.filter(adresse_region=request.user.membre.region)
+        else:
+            return qs
+    '''
     def get_form(self, request, obj=None, **kwargs):
         form = super(BeneficiaireAdmin, self).get_form(request, obj, **kwargs)
         if 'centre' in form.base_fields and not request.user.is_superuser:
@@ -75,7 +87,7 @@ class BeneficiaireAdmin(admin.ModelAdmin):
             form.base_fields['centre'].disabled = True
             form.base_fields['adresse_region'].initial = centre_obj.region.id
             form.base_fields['adresse_province'].initial = centre_obj.province.id
-        return form
+        return form'''
     """
         Set extra=0 for inlines if object already exists
     """

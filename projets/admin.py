@@ -86,12 +86,24 @@ class ProjetAdmin(admin.ModelAdmin):
         }),
     )
 
+    def get_queryset(self, request):
+        qs = super(ProjetAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        elif request.user.membre.province:
+            return qs.filter(lieu_province=request.user.membre.province)
+        elif request.user.membre.region:
+            return qs.filter(lieu_region=request.user.membre.region)
+        else:
+            return qs
+
+    ''''
     def has_change_permission(self, request, obj=None):
         if obj is None:
             return False
         if request.user.is_superuser:
             return True
-        elif request.user.groups.get().id == obj.centre.gerant.id:
+        elif obj.centre.gerant in request.user.groups.all():
             return True
         else:
             return False
@@ -101,17 +113,17 @@ class ProjetAdmin(admin.ModelAdmin):
             return False
         if request.user.is_superuser:
             return True
-        elif request.user.groups.get().id == obj.centre.gerant.id:
+        elif obj.centre.gerant in request.user.groups.all():
             return True
         else:
-            return False
+            return False'''
 
     def get_form(self, request, obj=None, **kwargs):
         form = super(ProjetAdmin, self).get_form(request, obj, **kwargs)
-        if 'centre' in form.base_fields and not request.user.is_superuser:
+        ''''if 'centre' in form.base_fields and not request.user.is_superuser:
             centre_obj = Centre.objects.get(gerant__id=request.user.groups.get().id)
             form.base_fields['centre'].initial = centre_obj
             form.base_fields['lieu_region'].initial = centre_obj.region
             form.base_fields['lieu_province'].initial = centre_obj.region
-            form.base_fields['centre'].disabled = True
+            form.base_fields['centre'].disabled = True'''
         return form

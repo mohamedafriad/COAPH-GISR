@@ -1,0 +1,16 @@
+{% extends "frontend/index.html" %}
+{% load static %}{% load l10n %}
+{% block extrahead %}
+<style>
+.scrollview {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+</style>
+{% endblock %}
+{% block content %}
+    {{ form.as_ul }}
+{% endblock %}
+{% block extrascripts %}
+{% endblock %}

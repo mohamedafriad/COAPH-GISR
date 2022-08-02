@@ -1,0 +1,20 @@
+{% extends "frontend/index.html" %}
+{% load static %}{% load l10n %}
+{% block extrahead %}
+<style>
+.scrollview {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="row gx-1 gx-lg-5 align-items-center my-5 justify-content-center">
+    <div class="col-12 d-flex justify-content-center">
+        {{ form.as_p }}
+    </div>
+</div>
+{% endblock %}
+{% block extrascripts %}
+{% endblock %}

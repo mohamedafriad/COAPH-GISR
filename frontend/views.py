@@ -48,9 +48,12 @@ def agr(request):
 
 def suivi_agr(request):
     try:
-        num_demande=request.GET['num_demande']
-        projet=Projet.objects.get(pk=num_demande)
-        return render(request, template_name="frontend/agr_suivi.html", context={"projet": projet})
+        num_demande = request.GET['num_demande']
+        projet = Projet.objects.get(pk=num_demande)
+        projet_url = request.build_absolute_uri()
+        #projet_url = str(website_url) + str(reverse('f-suivi-agr')) + '?num_demande='+ str(projet.pk)
+        print(projet_url)
+        return render(request, template_name="frontend/agr_suivi.html", context={"projet": projet, 'projet_url':projet_url})
     except:
         return render(request, template_name="frontend/agr_suivi.html", context={"error": True})
 
@@ -88,6 +91,8 @@ def backlogout(request):
     request.session['is_authenticated'] = False
     logout(request)
     return redirect('front')
+
+
 
 #affiche la liste des projets
 def list_projets(request):
@@ -132,5 +137,12 @@ def dashboard(request):
     else:
         return redirect('b-login')
 
+from projets.forms import ProjetForm
+def add_projet(request):
+    if request.user.is_authenticated :
+        form = ProjetForm()
+        return render(request, template_name="backend/projet_add.html", context={'form': form})
+    else:
+        return redirect('b-login')
 
 

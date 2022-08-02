@@ -40,7 +40,7 @@
               <label for="projet_dated" class="form-label col-3">تاريخ الطلب</label>
               <input type="text" name="projet_dated" class="input" disabled value="{{ projet.date_demande}}" class="form-control col-9" readonly />
             </div>
-            {% for ben in projet.porteur.all %}
+            {% comment %}{% for ben in projet.porteur.all %}
             <div class="col-md-6  col-sm-12">
               <label class="form-label col-3" for="projet_ben">حامل المشروع</label>
               <input type="text" name="projet_ben" class="input" disabled value="{{ ben.beneficiaire.nom_ar}} {{ ben.beneficiaire.prenom_ar}}" class="form-control col-9" readonly />
@@ -50,6 +50,7 @@
               <input type="text" name="projet_cin" class="input" disabled value="{{ ben.beneficiaire.cin}}" class="form-control col-9" readonly />
             </div>
             {% endfor %}
+            {% endcomment %}
             <div class="col-md-6 col-sm-12">
               <label class="form-label col-3" for="projet_etap">مرحلة الطلب</label>
               <input type="text" class="input" disabled name="projet_etap" value="{{ projet.get_etape }}" class="form-control col-9" readonly />
@@ -69,9 +70,9 @@
           </form>
         </div>
       </div>
-      <div class="card-footer">
-        <div class="qrcode align-items-center">
-          {% qr_from_text "{{ projet.pk }}" size="s" image_format="svg" error_correction="L" %}
+      <div class="card-footer col-md-12 col-sm-12 text-center">
+        <div class="qrcode align-items-center col-md-12 col-sm-12">
+          {% qr_from_data  projet_url  size="s" image_format="svg" error_correction="L" %}
         </div>
       </div>
     </div>

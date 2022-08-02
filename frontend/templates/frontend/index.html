@@ -28,7 +28,7 @@
         * {
             font-family: "Cairo";
         }
-        nav.navbar, footer {
+        nav.navbar, footer, #offcanvasExample {
             background-color: #8A0651;
         }
         nav a {
@@ -71,7 +71,7 @@
                     <!--<span class="navbar-toggler-icon">القائمة </span>-->
                     <i class="fa-solid fa-list navbar-toggler-icon"></i> القائمة
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse container-fluid justify-content-between" id="navbarSupportedContent" >
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'front' %}">الرئيسية <i class="fa-solid fa-home"></i></a></li>
                         <li class="nav-item">
@@ -91,10 +91,15 @@
                         <li class="nav-item"><a class="nav-link" href="#!">اطرح سؤالا <i class="fa-solid fa-question"></i></a></li>-->
                         <li class="nav-item"><a class="nav-link" href="{% url 'f-centres' %}">المراكز <i class="fa-solid fa-map-location"></i></a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}" target="_blank">البوابة الإدارية <i class="fa-solid fa-cog"></i></a></li>
+                    </ul>
+                    <ul class="navbar-nav me-sm-0 mb-2 mb-lg-0">
                         {% if request.user.is_authenticated %}
-                        <button class="btn btn-primary nav-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                           مرحبا {{ request.user.username }}
-                        </button>
+                        <li class="nav-item d-flex justify-content-start"><a class="nav-link rounded-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                            </svg>
+                        </a></li>
                             <!--<li class="nav-item">
                               <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-user"></i>
@@ -114,19 +119,19 @@
             {% if request.user.is_authenticated %}
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
               <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">القائمة</h5>
-                <button type="button" class="btn-close text-reset btn-info" data-bs-dismiss="offcanvas" aria-label="اغلاق"></button>
+                <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">القائمة</h5>
+                <button type="button" class="btn-close text-reset btn-info bg-light" data-bs-dismiss="offcanvas" aria-label="اغلاق"></button>
               </div>
-              <div class="offcanvas-body d-flex flex-column flex-shrink-0 p-3 bg-light">
+              <div class="offcanvas-body d-flex flex-column flex-shrink-0 p-3">
                   <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'f-projets' %}"><i class="bi bi-card-checklist"></i> المشاريع</a>
+                        <a class="nav-link text-white" href="{% url 'f-projets' %}"><i class="bi bi-card-checklist"></i> المشاريع</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'b-dashboard' %}"><i class="bi bi-speedometer2"></i> لوحة القيادة</a>
+                        <a class="nav-link text-white"><i class="bi bi-speedometer2"></i> لوحة القيادة</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'b-logout' %}"><i class="bi bi-box-arrow-left"></i> الخروج</a>
+                        <a class="nav-link  text-white" href="{% url 'b-logout' %}"><i class="bi bi-box-arrow-left"></i> الخروج</a>
                     </li>
                   </ul>
               </div>

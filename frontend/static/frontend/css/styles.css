@@ -11286,3 +11286,39 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+/* css added by me */
+* {
+    font-family: "Cairo";
+}
+nav.navbar, footer, #offcanvasExample {
+    background-color: #8A0651;
+}
+nav a {
+    font-family: "Cairo";
+    font-size: 1.3rem;
+}
+nav a:hover {
+    color: white;
+}
+nav a.navbar-brand {
+    font-family: "Cairo";
+    font-size: 1.3rem;
+}
+#note {
+    display:none;
+}
+.navbar a, button.navbar-toggler {
+    color : white;
+}
+p.alert-danger {
+    background-color : #D11250;
+    color: white;
+}
+nav a.dropdown-item {
+    color: black;
+}
+thead {
+    background-color: #8A0651;
+    color: white;
+}

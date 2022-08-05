@@ -7,7 +7,7 @@
 <!-- Heading Row-->
   <div class="row gx-4 gx-lg-5 d-flex align-items-center justify-content-center my-5">
     <div class="col-md-6 col-sm-12">
-      <div class="card h-100">
+      <div class="card h-100 shadow-lg">
         <div class="card-header text-center">
           <h1 class="font-weight-light">الولوج إلى الفضاء الخاص</h1>
         </div>
@@ -20,13 +20,12 @@
           <form class="row g-2" method="post">{% csrf_token %}
             <div class="col-12">
               <label class="form-label" for="username">اسم المستعمل</label>
-              <input type="text" class="form-control" name="username" placeholder="اسم المستعمل" />
+              <input type="text" class="form-control" name="username" required placeholder="اسم المستعمل" />
             </div>
             <div class="col-12">
               <label class="form-label" for="password">الرمز السري</label>
-              <input type="password" class="form-control" name="password" placeholder="الرمز السري" />
+              <input type="password" class="form-control" name="password" required placeholder="الرمز السري" />
             </div>
-
         </div>
         <div class="card-footer col-12 text-center">
           <div class="col-12">

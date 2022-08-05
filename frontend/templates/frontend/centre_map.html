@@ -7,7 +7,7 @@
 {% block content %}
 <div class="row gx-4 gx-lg-5 align-items-center my-5">
     <div class="col-sm-6">
-        <div class="card h-100 col-sm-12">
+        <div class="card h-100 col-sm-12 shadow">
             <div class="card-header text-center">
                 <h1 class="font-weight-light">معلومات المركز</h1>
             </div>
@@ -18,8 +18,7 @@
                 <p>البريد الالكتروني: {{ centre.email }}</p>
                 <p>العنوان: {{ centre.adresse }}</p>
             </div>
-            <div class="card-footer col-sm-12 text-center">
-            </div>
+            <div class="card-footer col-sm-12 text-center"></div>
         </div>
     </div>
     <div class="col-sm-6">
@@ -34,7 +33,7 @@
             <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp={{ centre.latitude|unlocalize }}~{{ centre.longitude|unlocalize }}&amp;sty=r&amp;lvl=7&amp;rtp=~pos.29.714381718091744_-9.807977350775786____&amp;FORM=MBEDLD">Calculer l’itinéraire</a>
         </div>
     </div>-->
-    </div>
+</div>
 {% endblock %}
 {% block extrascripts %}
 <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>

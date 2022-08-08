@@ -18,19 +18,28 @@ def not_found(request):
 
 def centres(request):
     centres = Centre.objects.all()
-    try:
-        region = request.GET['region']
-        centres=centres.filter(region__pk=region)
-    except:
-        pass
-    try:
-        province = request.GET['province']
-        centres=centres.filter(province__pk=province)
-    except:
-        pass
     provinces = Province.objects.all()
     regions = Region.objects.all()
-    return render(request, template_name="frontend/centres.html", context={"centres": centres, "regions": regions, "provinces": provinces})
+    province_selected = 0
+    region_selected = 0
+    try:
+        region = int(request.GET['region'])
+        if region != 0 :
+            adresse_region = Region.objects.get(pk=region)
+            centres=centres.filter(region=adresse_region)
+            provinces = provinces.filter(region=adresse_region)
+            region_selected = region
+    except:
+        pass
+    try:
+        province = int(request.GET['province'])
+        if province != 0 :
+            adresse_province = Province.objects.get(pk=province)
+            centres=centres.filter(province=adresse_province)
+            province_selected = province
+    except:
+        pass
+    return render(request, template_name="frontend/centres.html", context={"centres": centres, "regions": regions, "provinces": provinces, "province_selected": province_selected, "region_selected": region_selected})
 
 def centre(request, pk=None):
     centre = Centre.objects.get(pk=pk)
@@ -119,8 +128,8 @@ def list_projets(request):
                 province_selected = province
         except:
             pass
-        
-        return render(request, template_name="frontend/projets.html", context={"projets": projets, "regions": regions, "provinces": provinces, "province_selected": province, "region_selected": region})
+
+        return render(request, template_name="frontend/projets.html", context={"projets": projets, "regions": regions, "provinces": provinces, "province_selected": province_selected, "region_selected": region_selected})
     else:
         return redirect('b-login')
 
@@ -156,7 +165,7 @@ def dashboard(request):
                 projets=projets.filter(lieu_province=lieu_province)
         except:
             pass
-        
+
         return render(request, template_name="backend/dashboard.html", context={"projets": projets, "regions": regions, "provinces": provinces, "province_selected": province, "region_selected": region})
     else:
         return redirect('b-login')

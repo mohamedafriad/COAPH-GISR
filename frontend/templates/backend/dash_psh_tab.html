@@ -1,0 +1,57 @@
+<div class="tab-pane fade col-md-12" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+    <ul class="nav nav-pills mt-2 mb-3 d-flex justify-content-center text-center" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-genre-tab" data-bs-toggle="pill" data-bs-target="#pills-genre" type="button" role="tab" aria-controls="pills-genre" aria-selected="true">حسب النوع</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-handicap-tab" data-bs-toggle="pill" data-bs-target="#pills-handicap" type="button" role="tab" aria-controls="pills-handicap" aria-selected="false">حسب الإعاقة </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-milieu-tab" data-bs-toggle="pill" data-bs-target="#pills-milieu" type="button" role="tab" aria-controls="pills-milieu" aria-selected="false">حسب الوسط</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-scolarite-tab" data-bs-toggle="pill" data-bs-target="#pills-scolarite" type="button" role="tab" aria-controls="pills-scolarite" aria-selected="false">حسب المستوى الدراسي</button>
+      </li>
+    </ul>
+    <div class="tab-content d-flex justify-content-center" id="pills-tabContent">
+      <!-- PAR GENRE -->
+      <div class="tab-pane fade show active w-100" id="pills-genre" role="tabpanel" aria-labelledby="pills-genre-tab">
+        <div class="row gx-2 gy-2 my-4 justify-content-center">
+          {% include "backend/card.html" with col="4" bg="primary" titre="ذكر" icon="male" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="4" bg="danger" titre="أنثى" icon="female" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="4" bg="info" titre="المجموع" icon="children" cardinfo=projets.count only %}
+        </div>
+      </div>
+      <!-- FIN TAB PAR GENRE -->
+      <!-- TAB PAR HANDICAP -->
+      <div class="tab-pane fade w-100" id="pills-handicap" role="tabpanel" aria-labelledby="pills-handicap-tab">
+        <div class="row gx-1 gy-2 my-4 justify-content-center">
+          {% include "backend/card.html" with col="2" bg="primary" titre="حركية" icon="wheelchair" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="2" bg="success" titre="بصرية" icon="eye-low-vision" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="2" bg="warning" titre="صوتية وسمعية" icon="ear-deaf" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="2" bg="info" titre="ذهنية" icon="head-side-virus" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="2" bg="danger" titre="مركبة" icon="brain" cardinfo=projets.count only %}
+        </div>
+      </div>
+      <!-- FIN TAB HANDICAP -->
+      <!-- TAB PAR MILIEU D'IMPLANTATION -->
+      <div class="tab-pane fade w-100" id="pills-milieu" role="tabpanel" aria-labelledby="pills-milieu-tab">
+        <div class="row gx-1 gy-2 my-4  justify-content-center">
+          {% include "backend/card.html" with col="6" bg="primary" titre="حضري" icon="city" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="6" bg="success" titre="قروي" icon="mountain-sun" cardinfo=projets.count only %}
+        </div>
+      </div>
+      <!-- FIN TAB PAR MILIEU D'IMPLANTATION -->
+      <!-- PROJETS PAR SCOLARITE -->
+      <div class="tab-pane fade w-100" id="pills-scolarite" role="tabpanel" aria-labelledby="pills-scolarite-tab">
+        <div class="row gx-2 gy-2 my-4 justify-content-center">
+          {% include "backend/card.html" with col="2" bg="danger" titre="بدون" icon="ban" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="2" bg="warning" titre="ابتدائي" icon="school" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="2" bg="info" titre="إعدادي" icon="book-open" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="2" bg="success" titre="ثانوي" icon="book-open-reader" cardinfo=projets.count only %}
+          {% include "backend/card.html" with col="2" bg="primary" titre="عالي" icon="graduation-cap" cardinfo=projets.count only %}
+        </div>
+      </div>
+      <!-- FIN TAB SCOLARITE -->
+    </div>      
+  </div>

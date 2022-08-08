@@ -98,12 +98,17 @@ def backlogout(request):
 def list_projets(request):
     if request.session.get('is_authenticated', False) :
         projets = Projet.objects.all()
+        provinces = Province.objects.all()
+        regions = Region.objects.all()
+        region_selected = 0
+        province_selected = 0
         try:
             region = int(request.GET['region'])
             if region != 0:
                 lieu_region = Region.objects.get(pk=region)
                 projets=projets.filter(lieu_region=lieu_region)
-                print(projets)
+                provinces = provinces.filter(region=lieu_region)
+                region_selected = region
         except:
             pass
         try:
@@ -111,12 +116,11 @@ def list_projets(request):
             if province != 0:
                 lieu_province = Province.objects.get(pk=province)
                 projets=projets.filter(lieu_province=lieu_province)
-                print(projets)
+                province_selected = province
         except:
             pass
-        provinces = Province.objects.all()
-        regions = Region.objects.all()
-        return render(request, template_name="frontend/projets.html", context={"projets": projets, "regions": regions, "provinces": provinces})
+        
+        return render(request, template_name="frontend/projets.html", context={"projets": projets, "regions": regions, "provinces": provinces, "province_selected": province, "region_selected": region})
     else:
         return redirect('b-login')
 
@@ -133,7 +137,27 @@ def list_psh(request):
 def dashboard(request):
     if request.session.get('is_authenticated', False) :
         projets = Projet.objects.all()
-        return render(request, template_name="backend/dashboard.html", context={'projets': projets})
+        provinces = Province.objects.all()
+        regions = Region.objects.all()
+        province = 0
+        region = 0
+        try:
+            region = int(request.GET['region'])
+            if region != 0:
+                lieu_region = Region.objects.get(pk=region)
+                projets=projets.filter(lieu_region=lieu_region)
+                provinces = provinces.filter(region=lieu_region)
+        except:
+            pass
+        try:
+            province = int(request.GET['province'])
+            if province != 0:
+                lieu_province = Province.objects.get(pk=province)
+                projets=projets.filter(lieu_province=lieu_province)
+        except:
+            pass
+        
+        return render(request, template_name="backend/dashboard.html", context={"projets": projets, "regions": regions, "provinces": provinces, "province_selected": province, "region_selected": region})
     else:
         return redirect('b-login')
 

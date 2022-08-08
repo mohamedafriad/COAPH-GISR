@@ -91,13 +91,16 @@
               <div class="offcanvas-body d-flex flex-column flex-shrink-0 p-3">
                   <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'f-projets' %}"><i class="bi bi-card-checklist"></i> المشاريع</a>
+                        <a class="nav-link text-white" href="{% url 'f-projets' %}"><i class="fas fa-folder-tree"></i> المشاريع</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white"><i class="bi bi-speedometer2"></i> لوحة القيادة</a>
+                        <a class="nav-link text-white"  href="{% url 'b-dashboard' %}"><i class="fas fa-person-chalkboard"></i> لوحة القيادة</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="{% url 'b-logout' %}"><i class="bi bi-box-arrow-left"></i> الخروج</a>
+                        <a class="nav-link text-white"  href="{% url 'b-dashboard' %}"><i class="fas fa-check-to-slot"></i> تنقيط المشاريع </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-white" href="{% url 'b-logout' %}"><i class="fas fa-person-running"></i> الخروج</a>
                     </li>
                   </ul>
               </div>

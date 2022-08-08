@@ -22,7 +22,7 @@
                         <select class="form-select text-center" name="region" id="region" placeholder="الجهة">
                             <option value="0">الجهة</option>
                             {% for region in regions %}
-                                <option value="{{ region.pk }}">{{ region.nom}}</option>
+                                <option value="{{ region.pk }}" {% if region.pk == region_selected %}selected{% endif %}>{{ region.nom}}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -30,7 +30,7 @@
                         <select class="form-select text-center" name="province" id="province" placeholder="الإقليم">
                             <option value="0">الإقليم</option>
                             {% for province in provinces %}
-                                <option value="{{ province.pk }}">{{ province.nom}}</option>
+                                <option value="{{ province.pk }}" {% if province.pk == province_selected %}selected{% endif %}>{{ province.nom}}</option>
                             {% endfor %}
                         </select>
                     </div>

@@ -24,6 +24,8 @@ from frontend import views as front_views
 admin.site.enable_nav_sidebar = False
 #router = routers.DefaultRouter()
 #router.register(r'attestations', attestation_views.AttestationView, 'attestation')
+handler404 = 'frontend.views.not_found_view'
+handler500 = 'frontend.views.not_found_view'
 
 urlpatterns = [
     #path('xadmin/', include(xadmin.site.urls)),

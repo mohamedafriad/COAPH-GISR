@@ -2,6 +2,11 @@
 {% load static %}{% load l10n %}
 {% block extrahead %}
 <style>
+.scrollview {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
 </style>
 {% endblock %}
 {% block content %}
@@ -12,7 +17,7 @@
                 <h4 class="font-weight-light"> البحث عن مركز توجيه ومساعدة الأشخاص في وضعية إعاقة</h4>
             </div>
             <div class="card-body justify-content-between">
-                <form class="form row gx-sm-2 gx-4" method="get">
+                <form class="form row gx-md-4 gx-2" method="get">
                     <div class="col-5">
                         <select class="form-select text-center" name="region" id="region" placeholder="الجهة">
                             <option value="0">الجهة</option>
@@ -41,7 +46,7 @@
         </div>
     </div>
 </div>
-<div class="row gx-4 gx-lg-5 align-items-center my-5">
+<div class="row gx-4 gx-lg-5 align-items-center my-5 scrollview">
     <div class="col-sm-12">
         <table class="table table-striped">
             <thead>

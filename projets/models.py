@@ -5,26 +5,39 @@ from django.contrib.auth.models import User
 from beneficiaires.models import Beneficiaire
 from centres.models import Centre, Region, Province, Commune, Membre
 
+NATURE_INDIV = 1
+NATURE_COLLECT = 2
 NATURE_PROJET=(
-    (1, _('Individuel')),
-    (2, _('Collectif')),
+    (NATURE_INDIV, _('Individuel')),
+    (NATURE_COLLECT, _('Collectif')),
 )
 
+FORME_AE = 1
+FORME_PH = 2
+FORME_SOC = 3
+FORME_COOP = 4
+FORME_AUTRE = 5
 FORME_JURIDIQUE_CHOIX=(
-    (1, _('Auto-Entrepreneur')),
-    (2, _('RC/Personne Physique')),
-    (3, _('Société')),
-    (4, _('Coopérative')),
-    (5, _('Autre')),
+    (FORME_AE, _('Auto-Entrepreneur')),
+    (FORME_PH, _('RC/Personne Physique')),
+    (FORME_SOC, _('Société')),
+    (FORME_COOP, _('Coopérative')),
+    (FORME_AUTRE, _('Autre')),
 )
 
+SECT_SERVICES = 1
+SECT_COMMERCE = 2
+SECT_INDUSTRIE = 3
+SECT_TRANSPORT = 4
+SECT_ARTISANAT = 5
+SECT_AUTRE = 6
 SECTEUR_CHOIX=(
-    (1, _('Services')),
-    (2, _('Commerce')),
-    (3, _('Industrie')),
-    (4, _('Transport')),
-    (5, _('Artisanat')),
-    (6, _('Autre')),
+    (SECT_SERVICES, _('Services')),
+    (SECT_COMMERCE, _('Commerce')),
+    (SECT_INDUSTRIE, _('Industrie')),
+    (SECT_TRANSPORT, _('Transport')),
+    (SECT_ARTISANAT, _('Artisanat')),
+    (SECT_AUTRE, _('Autre')),
 )
 
 TYPES_PIECE_LOCAL=(
@@ -219,6 +232,7 @@ class Projet(models.Model):
         return data
     get_beneficiaires.allow_tags=True
     get_beneficiaires.short_description=_("Bénéficiaires")
+
 
 
 COMMISSION_CHOIX = (

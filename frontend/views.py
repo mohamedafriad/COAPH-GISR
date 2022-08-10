@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
-from projets.models import Projet
+from projets.models import Projet, FORME_AE, FORME_PH, FORME_SOC, FORME_COOP, FORME_AUTRE
 from beneficiaires.models import Beneficiaire
 from centres.models import Centre, Province, Region
 from .forms import LoginForm
 
+def not_found_view(request):
+    return redirect('front')
 
 def index(request):
     return render(request, template_name="frontend/index.html")
@@ -150,6 +152,8 @@ def dashboard(request):
         regions = Region.objects.all()
         province = 0
         region = 0
+        projets_individuels = 0
+        projets_collectifs = 0
         try:
             region = int(request.GET['region'])
             if region != 0:
@@ -165,8 +169,29 @@ def dashboard(request):
                 projets=projets.filter(lieu_province=lieu_province)
         except:
             pass
-
-        return render(request, template_name="backend/dashboard.html", context={"projets": projets, "regions": regions, "provinces": provinces, "province_selected": province, "region_selected": region})
+        # projets par forme juridique
+        projets_ae = projets.filter(forme_juridique=FORME_AE).count()
+        projets_ph = projets.filter(forme_juridique=FORME_PH).count()
+        projets_soc = projets.filter(forme_juridique=FORME_SOC).count()
+        projets_coop = projets.filter(forme_juridique=FORME_COOP).count()
+        # projets par milieu
+        projets_urbain = projets.filter(lieu_commune__milieu=1).count()
+        projets_rural = projets.filter(lieu_commune__milieu=2).count()
+        dict_context ={
+            "projets": projets,
+            "regions": regions,
+            "provinces": provinces,
+            "province_selected": province,
+            "region_selected": region,
+            "projets_ae": projets_ae,
+            "projets_ph": projets_ph,
+            "projets_soc": projets_soc,
+            "projets_coop": projets_coop,
+            "projets_urbain":projets_urbain,
+            "projets_rural": projets_rural,
+            "projets_collectifs": projets_collectifs,
+        }
+        return render(request, template_name="backend/dashboard.html", context=dict_context)
     else:
         return redirect('b-login')
 

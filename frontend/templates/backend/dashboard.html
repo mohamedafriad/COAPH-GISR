@@ -3,78 +3,88 @@
 {% block title %}خدماتي - COAPH - الفضاء الخاص{% endblock %}
 {% block extrahead %}
 <style>
-    .card-counter{
-    box-shadow: 2px 2px 10px #DADADA;
-    margin: 5px;
-    padding: 20px 10px;
-    background-color: #fff;
-    height: 100px;
-    border-radius: 5px;
-    transition: .3s linear all;
-  }
+    .card-counter {
+        box-shadow: 2px 2px 10px #DADADA;
+        margin: 5px;
+        padding: 20px 10px;
+        background-color: #fff;
+        height: 100px;
+        border-radius: 5px;
+        transition: .3s linear all;
+    }
 
-  .card-counter:hover{
-    box-shadow: 4px 4px 20px #DADADA;
-    transition: .3s linear all;
-  }
+    .card-counter:hover{
+        box-shadow: 4px 4px 20px #DADADA;
+        transition: .3s linear all;
+    }
 
-  .card-counter.primary{
-    background-color: #007bff;
-    color: #FFF;
-  }
+    .card-counter.primary{
+        background-color: #007bff;
+        color: #FFF;
+    }
 
-  .card-counter.danger{
-    background-color: #ef5350;
-    color: #FFF;
-  }
+    .card-counter.danger{
+        background-color: #ef5350;
+        color: #FFF;
+    }
 
-  .card-counter.success{
-    background-color: #66bb6a;
-    color: #FFF;
-  }
+    .card-counter.success{
+        background-color: #66bb6a;
+        color: #FFF;
+    }
 
-  .card-counter.info{
-    background-color: #26c6da;
-    color: #FFF;
-  }
+    .card-counter.info{
+        background-color: #26c6da;
+        color: #FFF;
+    }
 
-  .card-counter i{
-    font-size: 5em;
-    opacity: 0.2;
-  }
+    .card-counter i{
+        font-size: 5em;
+        opacity: 0.2;
+    }
 
-  .card-counter .count-numbers{
-    position: absolute;
-    right: 35px;
-    top: 20px;
-    font-size: 32px;
-    display: block;
-  }
+    .card-counter .count-numbers{
+        position: absolute;
+        right: 35px;
+        top: 20px;
+        font-size: 32px;
+        display: block;
+    }
 
-  .card-counter .count-name{
-    position: absolute;
-    right: 35px;
-    top: 65px;
-    font-style: italic;
-    text-transform: capitalize;
-    opacity: 0.5;
-    display: block;
-    font-size: 18px;
-  }
-#female > .card-header {
-  background-color: #d63384;
-}
-#male > .card-header {
-  background-color: #0d6efd;
-}
-div#contentall {
-  position: relative;
-}
+    .card-counter .count-name{
+        position: absolute;
+        right: 35px;
+        top: 65px;
+        font-style: italic;
+        text-transform: capitalize;
+        opacity: 0.5;
+        display: block;
+        font-size: 18px;
+    }
+    #female > .card-header {
+      background-color: #d63384;
+    }
+    #male > .card-header {
+      background-color: #0d6efd;
+    }
+    div#contentall {
+      position: relative;
+    }
+    .card {
+        transition: transform 0.2s ease;
+        box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+        border-radius: 0;
+        border: 0;
+        margin-bottom: 1.5em;
+    }
+    .card:hover {
+        transform: scale(1.1);
+    }
 </style>
 {% endblock %}
 {% block content %}
 
-{% include 'backend/region_province_filter.html' %}
+{% include 'backend/region_province_filter_backend.html' %}
 
 <div class="d-flex align-items-start">
   <div class="nav flex-column nav-pills ms-3 col-md-2 col-sm-12 py-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -89,10 +99,7 @@ div#contentall {
     <div class="tab-pane fade show active col-md-12" id="v-pills-projets" role="tabpanel" aria-labelledby="v-pills-projets-tab">
       <ul class="nav nav-pills mt-2 mb-3 d-flex justify-content-center text-center" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">حسب الوضعية</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">حسب الصيغة القانونية</button>
+          <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">حسب الصيغة القانونية</button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">حسب الوسط</button>
@@ -100,10 +107,13 @@ div#contentall {
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="pills-secteur-tab" data-bs-toggle="pill" data-bs-target="#pills-secteur" type="button" role="tab" aria-controls="pills-secteur" aria-selected="false">حسب القطاع</button>
         </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-situation-tab" data-bs-toggle="pill" data-bs-target="#pills-situation" type="button" role="tab" aria-controls="pills-situation" aria-selected="true">حسب الوضعية</button>
+        </li>
       </ul>
       <div class="tab-content d-flex justify-content-center" id="pills-tabContent">
         <!-- PROJETS PAR SITUATION -->
-        <div class="tab-pane fade show active w-100" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="tab-pane fade show w-100" id="pills-situation" role="tabpanel" aria-labelledby="pills-situation-tab">
           <div class="row gx-2 gy-2 my-4 justify-content-center">
             {% include "backend/card.html" with col="2" bg="primary" titre="في طور المعالجة" icon="arrows-spin" cardinfo=projets.count only %}
             {% include "backend/card.html" with col="2" bg="success" titre="تم توقيع عقد التمويل" icon="file-signature" cardinfo=projets.count only %}
@@ -114,12 +124,12 @@ div#contentall {
         </div>
         <!-- FIN TAB SITUATION PROJET -->
         <!-- TAB PAR FORME JURIDIQUE -->
-        <div class="tab-pane fade w-100" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="tab-pane active show fade w-100" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
           <div class="row gx-1 gy-2 my-4">
-            {% include "backend/card.html" with col="3" bg="primary" titre="مقاول ذاتي" icon="briefcase" cardinfo=projets_ae only %}
-            {% include "backend/card.html" with col="3" bg="success" titre="شركة ذاتية" icon="building" cardinfo=projets_ph only %}
-            {% include "backend/card.html" with col="3" bg="warning" titre="شركة أشخاص" icon="people-group" cardinfo=projets_soc only %}
-            {% include "backend/card.html" with col="3" bg="info" titre="تعاونية" icon="hands-holding-circle" cardinfo=projets_coop only %}
+            {% include "backend/card.html" with col="3" bg="primary" titre="مقاول ذاتي" icon="briefcase" cardinfo=projets_ae cardinfoplus=projets.count only %}
+            {% include "backend/card.html" with col="3" bg="success" titre="شركة ذاتية" icon="building" cardinfo=projets_ph cardinfoplus=projets.count  only %}
+            {% include "backend/card.html" with col="3" bg="warning" titre="شركة أشخاص" icon="people-group" cardinfo=projets_soc cardinfoplus=projets.count only %}
+            {% include "backend/card.html" with col="3" bg="info" titre="تعاونية" icon="hands-holding-circle" cardinfo=projets_coop cardinfoplus=projets.count only %}
           </div>
         </div>
         <!-- FIN TAB FORME JURIDIQUE -->
@@ -134,11 +144,12 @@ div#contentall {
         <!-- PROJETS PAR SECTEUR -->
         <div class="tab-pane fade w-100" id="pills-secteur" role="tabpanel" aria-labelledby="pills-secteur-tab">
           <div class="row gx-2 gy-2 my-4 justify-content-center">
-            {% include "backend/card.html" with col="2" bg="primary" titre="التجارة" icon="shop" cardinfo=projets.count only %}
-            {% include "backend/card.html" with col="2" bg="success" titre="الخدمات" icon="truck-fast" cardinfo=projets.count only %}
-            {% include "backend/card.html" with col="2" bg="info" titre="الصناعة التقليدية" icon="rug" cardinfo=projets.count only %}
-            {% include "backend/card.html" with col="2" bg="warning" titre="الفلاحة" icon="tractor" cardinfo=projets.count only %}
-            {% include "backend/card.html" with col="2" bg="danger" titre="الصناعة" icon="industry" cardinfo=projets.count only %}
+            {% include "backend/card.html" with col="2" bg="primary" titre="التجارة" icon="shop" cardinfo=projets_commerce only %}
+            {% include "backend/card.html" with col="2" bg="success" titre="الخدمات" icon="truck-fast" cardinfo=projets_services only %}
+            {% include "backend/card.html" with col="2" bg="info" titre="الصناعة التقليدية" icon="rug" cardinfo=projets_artisanat only %}
+            {% include "backend/card.html" with col="2" bg="warning" titre="الفلاحة" icon="tractor" cardinfo=projets_agriculture only %}
+            {% include "backend/card.html" with col="2" bg="danger" titre="الصناعة" icon="industry" cardinfo=projets_industrie only %}
+            {% include "backend/card.html" with col="2" bg="info" titre="آخر" icon="folder-tree" cardinfo=projets_autre only %}
           </div>
         </div>
         <!-- FIN TAB SECTEUR PROJET -->

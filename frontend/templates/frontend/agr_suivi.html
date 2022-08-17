@@ -34,38 +34,38 @@
           <form class="row g-3">
             <div class="col-md-6 col-sm-12">
               <label for="projet_pk" class="form-label col-3">رقم الطلب</label>
-              <input type="text" name="projet_pk" class="input" disabled value="{{ projet.pk}}" class="form-control col-9" readonly/>
+              <input type="text" name="projet_pk" class="input form-control col-8" disabled value="{{ projet.pk}}" class="form-control col-8" readonly/>
             </div>
             <div class="col-md-6  col-sm-12">
               <label for="projet_dated" class="form-label col-3">تاريخ الطلب</label>
-              <input type="text" name="projet_dated" class="input" disabled value="{{ projet.date_demande}}" class="form-control col-9" readonly />
+              <input type="text" name="projet_dated" class="input form-control col-8" disabled value="{{ projet.date_demande}}" readonly />
             </div>
             {% comment %}{% for ben in projet.porteur.all %}
             <div class="col-md-6  col-sm-12">
               <label class="form-label col-3" for="projet_ben">حامل المشروع</label>
-              <input type="text" name="projet_ben" class="input" disabled value="{{ ben.beneficiaire.nom_ar}} {{ ben.beneficiaire.prenom_ar}}" class="form-control col-9" readonly />
+              <input type="text" name="projet_ben" class="input form-control col-8" disabled value="{{ ben.beneficiaire.nom_ar}} {{ ben.beneficiaire.prenom_ar}}" class="form-control col-9" readonly />
             </div>
             <div class="col-md-6  col-sm-12">
               <label class="form-label col-3" for="projet_cin">رقم البطاقة الوطنية</label>
-              <input type="text" name="projet_cin" class="input" disabled value="{{ ben.beneficiaire.cin}}" class="form-control col-9" readonly />
+              <input type="text" name="projet_cin" class="input form-control col-8" disabled value="{{ ben.beneficiaire.cin}}" readonly />
             </div>
             {% endfor %}
             {% endcomment %}
             <div class="col-md-6 col-sm-12">
               <label class="form-label col-3" for="projet_etap">مرحلة الطلب</label>
-              <input type="text" class="input" disabled name="projet_etap" value="{{ projet.get_etape }}" class="form-control col-9" readonly />
+              <input type="text" class="input form-control col-8" disabled name="projet_etap" value="{{ projet.get_etape }}" readonly />
             </div>
             <div class="col-md-6  col-sm-12">
               <label class="form-label col-3" for="projet_etapd">تاريخ المرحلة</label>
-              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.get_etape_date }}" class="form-control col-9" readonly />
+              <input type="text" class="input form-control col-8" disabled name="projet_etapd" value="{{ projet.get_etape_date }}" class="form-control col-8" readonly />
             </div>
             <div class="col-md-6  col-sm-12">
               <label class="form-label col-3" for="projet_etapd">اسم المشروع</label>
-              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.intitule }}" class="form-control col-9" readonly />
+              <input type="text" class="input form-control col-8" disabled name="projet_etapd" value="{{ projet.intitule }}" readonly />
             </div>
             <div class="col-md-6  col-sm-12">
               <label class="form-label col-3" for="projet_etapd">المبلغ المطلوب</label>
-              <input type="text" class="input" disabled name="projet_etapd" value="{{ projet.montant_demande }}" class="form-control col-9" readonly />
+              <input type="text" class="input form-control col-8" disabled name="projet_etapd" value="{{ projet.montant_demande }}" readonly />
             </div>
           </form>
         </div>
@@ -89,6 +89,7 @@
               <th>المرحلة</th>
               <th>تاريخها</th>
               <th>القرار</th>
+              <th>تقدم المرحلة</th>
             </tr>
           </thead>
           <tbody>
@@ -97,6 +98,11 @@
               <td>{{ etape.etape }}</td>
               <td>{{ etape.date_etap }}</td>
               <td>{{ etape.commentaire }}</td>
+              <td>
+                <div class="progress">
+                    <div class="progress-bar {% if etape.avancement == 100 %}bg-success{% elif etape.avancement < 10 %}bg-danger{% endif %}" role="progressbar" aria-label="Example with label" style="width: {{ etape.avancement }}%;" aria-valuenow="{{ etape.avancement }}" aria-valuemin="0" aria-valuemax="100">{{ etape.avancement }}%</div>
+                </div>
+              </td>
             </tr>
             {% endfor %}
           </tbody>

@@ -2,11 +2,15 @@
 {% load static %}{% load l10n %}
 {% block extrahead %}
 <style>
-.scrollview {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-}
+    .scrollview {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+    .card:hover {
+        transform: scale(1.0);
+        z-index:-1;
+    }
 </style>
 {% endblock %}
 {% block content %}
@@ -17,24 +21,55 @@
                 <h4 class="font-weight-light"> لائحة طلبات دعم المشاريع المدرة للدخل</h4>
             </div>
             <div class="card-body justify-content-between">
-                <form class="form row gx-md-4 gx-2" method="get">
-                    <div class="col-5">
-                        <select class="form-select text-center" name="region" id="region" placeholder="الجهة">
+                <form class="form row gx-md-2 gx-1 col-12 gy-sm-2" method="get">
+                    <div class="col-md-3 col-sm-4">
+                        <select class="form-select text-center h-100" name="region" id="region" placeholder="الجهة" {% if region_disabled %}disabled{% endif %}>
                             <option value="0">الجهة</option>
                             {% for region in regions %}
-                                <option value="{{ region.pk }}" {% if region.pk == region_selected %}selected{% endif %}>{{ region.nom}}</option>
+                                <option value="{{ region.pk }}" {% if region.pk == region_selected.pk %}selected{% endif %}>{{ region.nom}}</option>
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="col-5">
-                        <select class="form-select text-center" name="province" id="province" placeholder="الإقليم">
+                    <div class="col-md-3 col-sm-4">
+                        <select class="form-select text-center  h-100" name="province" id="province" placeholder="الإقليم" {% if province_disabled %}disabled{% endif %}>
                             <option value="0">الإقليم</option>
+                            {% if region_selected != 0 %}
                             {% for province in provinces %}
-                                <option value="{{ province.pk }}" {% if province.pk == province_selected %}selected{% endif %}>{{ province.nom}}</option>
+                                <option value="{{ province.pk }}" {% if province.pk == province_selected.pk %}selected{% endif %}>{{ province.nom}}</option>
                             {% endfor %}
+                            {% else %}
+                            {% for region in regions %}
+                            <optgroup label="{{ region.nom }}">
+                            {% for province in region.provinces.all %}
+                                <option value="{{ province.pk }}" {% if province.pk == province_selected.pk %}selected{% endif %}>{{ province.nom}}</option>
+                            {% endfor %}
+                            </optgroup>
+                            {% endfor %}
+                            {% endif %}
                         </select>
                     </div>
-                    <div class="col-2">
+                    <div class="col-md-3 col-sm4">
+                        <select class="form-select text-center  h-100" name="commune" id="commune" placeholder="الجماعة" {% if commune_disabled %}disabled{% endif %}>
+                            <option value="0">الجماعة</option>
+                            {% if province_selected != 0 %}
+                            {% for commune in communes %}
+                            <option value="{{ commune.pk }}" {% if commune.pk == commune_selected %}selected{% endif %}>{{ commune.nom}}</option>
+                            {% endfor %}
+                            {% else %}
+                            {% for province in provinces %}
+                            <optgroup label="{{ province.nom }}">
+                            {% for commune in province.communes.all %}
+                                <option value="{{ commune.pk }}" {% if commune.pk == commune_selected %}selected{% endif %}>{{ commune.nom}}</option>
+                            {% endfor %}
+                            </optgroup>
+                            {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="col-md-2 col-sm-6 h-50">
+                        <input class="form-control h-50" type="text" name="num_demande" placeholder="قم بإدخال رقم الطلب هنا" id="numeroD" {% if demande %}value="{{ demande }}"{% endif %}/>
+                      </div>
+                    <div class="col-1">
                         <button class="btn btn-primary" type="submit"><i class="fa-solid fa-solid fa-magnifying-glass">البحث</i></button>
                     </div>
                 </form>
@@ -54,9 +89,10 @@
                     <th>رقم الطلب </th>
                     <th>اسم المشروع</th>
                     <th>القطاع</th>
+                    <th>المبلغ المطلوب</th>
                     <th>المرحلة</th>
                     <th>تاريخ المرحلة</th>
-                    <th>المبلغ المطلوب</th>
+                    <th>نسبة التقدم</th>
                     <th>التفاصيل</th>
                 </tr>
             </thead>
@@ -66,9 +102,12 @@
                     <td>{{ projet.id }}</td>
                     <td>{{ projet.intitule }}</td>
                     <td>{{ projet.get_secteur_display }}</td>
+                    <td>{{ projet.montant_demande }}</td>
                     <td>{{ projet.get_etape }}</td>
                     <td>{{ projet.get_etape_date }}</td>
-                    <td>{{ projet.montant_demande }}</td>
+                    <td class="text-center">
+                    {{ projet.get_etape_avancement }}%
+                    </td>
                     <td><a href="{% url 'f-details-agr' num_demande=projet.pk %}" alt="détails"><i class="fas fa-eye"></i> </a></td>
                 </tr>
                 {% endfor %}
@@ -78,4 +117,17 @@
     </div>
 {% endblock %}
 {% block extrascripts %}
+<script>
+$(document).ready(function() {
+    $('select#region').select2({
+        theme: "classic",
+    });
+    $('select#province').select2({
+        theme: "classic"
+    });
+    $('select#commune').select2({
+        theme: "classic"
+    });
+});
+</script>
 {% endblock %}

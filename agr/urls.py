@@ -19,13 +19,16 @@ from rest_framework import routers
 #from attestation import views as attestation_views
 from frontend import views as front_views
 #from protheses import views as protheses_views
-#import xadmin
+from django.conf import settings
 
 admin.site.enable_nav_sidebar = False
 #router = routers.DefaultRouter()
 #router.register(r'attestations', attestation_views.AttestationView, 'attestation')
-handler404 = 'frontend.views.not_found_view'
-handler500 = 'frontend.views.not_found_view'
+if not settings.DEBUG :
+    handler404 = 'frontend.views.not_found_view'
+    handler500 = 'frontend.views.not_found_view'
+else:
+    pass
 
 urlpatterns = [
     #path('xadmin/', include(xadmin.site.urls)),
@@ -33,14 +36,13 @@ urlpatterns = [
     path('', front_views.index, name="front"),
     #path('api/', include(router.urls)),
     path('espace/', front_views.espace, name="f-espace"),
-    path('404/', front_views.not_found, name="f-404"),
     #path('coaph/', front_views.centres, name="f-centres-tout"),
     path('coaph/', front_views.centres, name="f-centres"),
     #path('coaph/<pk>/', front_views.centre, name="f-centre-sanspr"),
     path('coaph/<pk>/', front_views.centre, name="f-centre"),
-    path('attestation/', front_views.attestation, name="f-attestation"),
-    path('attestation/suivi/', front_views.suivi_attestation, name="f-suivi-attestation"),
-    path('attestation/suivi/<demande>/', front_views.suivi_attestation),
+    #path('attestation/', front_views.attestation, name="f-attestation"),
+    #path('attestation/suivi/', front_views.suivi_attestation, name="f-suivi-attestation"),
+    #path('attestation/suivi/<demande>/', front_views.suivi_attestation),
     #path('pdf/<int:attestation_pk>/', attestation_views.GeneratePdf.as_view()),
     path('agr/', front_views.agr, name="f-agr"),
     path('agr/suivi/', front_views.suivi_agr, name="f-suivi-agr"),

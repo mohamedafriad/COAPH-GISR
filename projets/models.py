@@ -28,14 +28,14 @@ FORME_JURIDIQUE_CHOIX=(
 SECT_SERVICES = 1
 SECT_COMMERCE = 2
 SECT_INDUSTRIE = 3
-SECT_TRANSPORT = 4
+SECT_AGRICULTURE = 4
 SECT_ARTISANAT = 5
 SECT_AUTRE = 6
 SECTEUR_CHOIX=(
     (SECT_SERVICES, _('Services')),
     (SECT_COMMERCE, _('Commerce')),
     (SECT_INDUSTRIE, _('Industrie')),
-    (SECT_TRANSPORT, _('Transport')),
+    (SECT_AGRICULTURE, _('Agriculture')),
     (SECT_ARTISANAT, _('Artisanat')),
     (SECT_AUTRE, _('Autre')),
 )
@@ -223,6 +223,18 @@ class Projet(models.Model):
         return ordre
     get_etape_commentaire.short_description = _("Commentaire")
 
+    def get_etape_avancement(self):
+        avancement = 0
+        if self.suivi.count():
+            dates = [x.date_etap for x in self.suivi.all()]
+            ordres = [x.etape.ordre for x in self.suivi.all()]
+            max_dates = max(dates)
+            max_ordre = max(ordres)
+            etape = self.suivi.get(date_etap=max_dates, etape__ordre=max_ordre)
+            avancement = etape.avancement
+        return avancement
+    get_etape_avancement.short_description = _("Avancement")
+
     @mark_safe
     def get_beneficiaires(self):
         data ="<ul>"
@@ -305,6 +317,7 @@ class SuiviProjet(models.Model):
         verbose_name = _('Etape')
     )
     date_etap = models.DateField(_('Date étape'), blank=True, null=True)
+    avancement = models.PositiveSmallIntegerField(_('Avancement étape'), default=0, help_text="%")
     commentaire = models.CharField(_('Commentaire'), max_length=300, blank=True)
 
     def __str__(self):

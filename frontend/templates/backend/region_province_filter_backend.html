@@ -5,18 +5,18 @@
             <div class="card-body justify-content-between">
                 <form class="form row gx-md-4 gx-1" method="get">
                     <div class="col-5">
-                        <select class="form-select text-center h-100" name="region" id="region" placeholder="الجهة">
+                        <select class="form-select text-center h-100" name="region" id="region" placeholder="الجهة" {% if region_disabled %}disabled{%endif %}>
                             <option value="null">الجهة</option>
                             {% for region in regions %}
-                                <option value="{{ region.pk }}" {% if region.pk == region_selected %}selected{% endif %}>{{ region.nom}}</option>
+                                <option value="{{ region.pk }}" {% if region.pk == region_selected.pk %}selected{% endif %}>{{ region.nom}}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="col-5">
-                        <select class="form-select text-center h-100" name="province" id="province" placeholder="الإقليم">
+                        <select class="form-select text-center h-100" name="province" id="province" placeholder="الإقليم" {% if province_disabled %}disabled{% endif %}>
                             <option value="null">الإقليم</option>
                             {% for province in provinces %}
-                                <option value="{{ province.pk }}" {% if province.pk == province_selected %}selected{% endif %}>{{ province.nom}}</option>
+                                <option value="{{ province.pk }}" {% if province.pk == province_selected.pk %}selected{% endif %}>{{ province.nom}}</option>
                             {% endfor %}
                         </select>
                     </div>
